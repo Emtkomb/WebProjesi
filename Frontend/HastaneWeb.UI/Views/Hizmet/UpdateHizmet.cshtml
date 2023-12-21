@@ -1,0 +1,24 @@
+﻿@model UpdateHizmetDto
+@{
+    ViewData["Title"] = "UpdateHizmet";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<form method="post">
+        <input type="hidden" asp-for="HizmetID" />
+        <label>Hizmet İkon</label>
+        <input type="text" asp-for="HizmetIcon" class="form-control" />
+        <span  asp-validation-for="HizmetIcon" class="text-info"></span>
+        <br />
+        <label>Hizmet Başlığı</label>
+        <input type="text" asp-for="HizmetTitle" class="form-control" />
+        <span  asp-validation-for="HizmetTitle" class="text-info"></span>
+
+        <br />
+        <label>Açıklama</label>
+        <input type="text" asp-for="HizmetAciklama" class="form-control" />
+        <span  asp-validation-for="HizmetAciklama" class="text-info"></span>
+
+        <br />
+        <button class="btn btn-primary">Hizmet Güncelle</button>
+</form>
+

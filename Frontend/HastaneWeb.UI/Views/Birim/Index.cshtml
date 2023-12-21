@@ -1,0 +1,28 @@
+﻿@model List<ResultBirimDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordred">
+    <tr>
+        <th>#</th>
+        <th>Birim Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>@item.BirimID</td>
+                <td>@item.BirimAdi</td>
+
+                <td><a href="/Birim/DeleteBirim/@item.BirimID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Birim/UpdateBirim/@item.BirimID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+    }
+</table>
+<a href="/Birim/AddBirim/" class="btn btn-info">Yeni Birim Girişi</a>
+
+

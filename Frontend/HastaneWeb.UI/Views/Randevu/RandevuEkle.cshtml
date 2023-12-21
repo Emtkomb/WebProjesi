@@ -1,0 +1,53 @@
+﻿@model CreateRandevuDto
+<div class="row contact-rooo no-margin">
+    <div class="container">
+        <div class="row">
+
+            <form method="post" asp-action="RandevuEkle" asp-controller="Randevu">
+
+                <h2>Randevu Bilgileri</h2>
+
+
+                <label>Adınız</label>
+                <input type="text" placeholder="Adınızı Giriniz" asp-for="Name" class="form-control input-sm" />
+
+
+                <label>Şehriniz</label>
+                <input type="text" placeholder="Şehrinizi Giriniz" asp-for="City" class="form-control input-sm" />
+
+                <br />
+
+                <label>Telefon</label>
+                <input type="text" placeholder="Telefon Numaranızı Giriniz" asp-for="TelNo" class="form-control input-sm" />
+                <br />
+                <label>Doktor</label>
+                <input type="text" placeholder="Birim Seçiniz" asp-for="DoktorID" class="form-control input-sm" />
+
+                <br />
+
+
+                <label>Randevu Giriş Tarihi</label>
+                <input type="datetime-local" placeholder="Giriş Tarihini Seçiniz" asp-for="RandevuGiris" class="form-control input-sm" />
+                <br />
+                <label>Randevu Çıkış Tarihi</label>
+                <input type="datetime-local" placeholder="Çıkış Tarihini Seçiniz" asp-for="RandevuCikis" class="form-control input-sm" />
+
+                <br />
+
+
+
+
+
+
+
+                <button class="btn btn-danger btn-sm">Randevu Al</button>
+
+
+            </form>
+
+
+
+        </div>
+    </div>
+
+</div>

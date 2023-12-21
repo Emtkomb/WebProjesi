@@ -1,0 +1,15 @@
+﻿@model CreateBirimDto
+@{
+    ViewData["Title"] = "AddBirim";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+        <label>Birim Adı</label>
+        <input type="text" asp-for="BirimAdi" class="form-control" />
+        <span  asp-validation-for="BirimAdi" class="text-danger"></span>
+        <br />
+
+        <button class="btn btn-primary">Birim Ekle</button>
+</form>
+

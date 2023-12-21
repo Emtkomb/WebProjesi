@@ -1,0 +1,43 @@
+﻿
+@model List<ResultDoktorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordred">
+    <tr>
+        <th>#</th>
+        <th>Doktor Adı:</th>
+        <th>Doktorun Hastaesi</th>
+        <th>Doktor Birimi</th>
+        <th>Doktor Telefon</th>
+        <th>Doktor Email</th>
+        <th>Doktor Giriş Saati</th>
+        <th>Doktor Çıkış Saati</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DoktorID</td>
+            <td>@item.DoktorName</td>
+            <td>@item.DoktorID</td>
+            <td>@item.HastaneID</td>
+            <td>@item.BirimID</td>
+            <td>@item.DoktorTelefon</td>
+            <td>@item.DoktorMail</td>
+            <td>@item.GirisTarih</td>
+            <td>@item.CikisTarih</td>
+            <td><a href="/Doktor/DeleteDoktor/@item.DoktorID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Doktor/UpdateDoktor/@item.DoktorID" class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+    }
+</table>
+<a href="/Doktor/AddDoktor/" class="btn btn-info">Yeni personel girişi</a>
+
+

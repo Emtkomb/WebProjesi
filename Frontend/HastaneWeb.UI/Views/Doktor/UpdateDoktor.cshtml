@@ -1,0 +1,30 @@
+﻿@model UpdateDoktorDto
+@{
+    ViewData["Title"] = "UpdateDoktor";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+<form method="post">
+    <input type="hidden" asp-for="DoktorID" />
+    <label>Doktor Adı</label>
+    <input type="text" asp-for="DoktorName" class="form-control" />
+    <br />
+    <label>Doktor Hastane</label>
+    <input type="text" asp-for="HastaneID" class="form-control" />
+    <br />
+    <label>Doktor Birimi</label>
+    <input type="text" asp-for="BirimID" class="form-control" />
+    <br />
+    <label>Doktor Telefonu</label>
+    <input type="text" asp-for="DoktorTelefon" class="form-control" />
+    <br />
+    <label>Doktor Maili</label>
+    <input type="text" asp-for="DoktorMail" class="form-control" />
+    <br />
+    <label>Doktor Giriş Saati</label>
+    <input type="datetime-local" asp-for="GirisTarih" class="form-control" />
+    <br />
+    <label>Doktor Çıkış Saati</label>
+    <input type="datetime-local" asp-for="CikisTarih" class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">Doktor Güncelle</button>
+</form>

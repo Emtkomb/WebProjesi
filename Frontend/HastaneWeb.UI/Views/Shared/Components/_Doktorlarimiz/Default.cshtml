@@ -1,0 +1,37 @@
+﻿@model List<ResultDoktorDto>
+<section class="our-team">
+    <div class="container">
+        <div class="inner-title">
+            <h2>Doktorlarımız</h2>
+
+        </div>
+        @foreach(var item in Model)
+        {
+            <div class="row team-member">
+                <div class="col-md-3 col-sm-6">
+                    <div class="user-card">
+                        <div class="userar">
+                            <img class="teammempic" alt="" src="~/free-hospital-medical/assets/images/team/team-memb1.jpg">
+                        </div>
+                        <div class="detfs">
+                            <p>@item.DoktorName - @item.BirimID</p>
+
+
+                            <p>@item.DoktorTelefon</p>
+
+                            <p>@item.DoktorMail</p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        }
+
+
+    </div>
+</section>

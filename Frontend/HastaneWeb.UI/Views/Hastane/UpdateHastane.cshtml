@@ -1,0 +1,31 @@
+﻿@model UpdateHastaneDto
+@{
+    ViewData["Title"] = "UpdateHastane";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+        <input type="hidden" asp-for="HastaneID" />
+        <label>Hastane Adı</label>
+        <input type="text" asp-for="HastaneAdi" class="form-control" />
+        <span  asp-validation-for="HastaneAdi" class="text-info"></span>
+        <br />
+        <label>Hastane Adresi</label>
+        <input type="text" asp-for="HastaneAdresi" class="form-control" />
+        <span  asp-validation-for="HastaneAdresi" class="text-info"></span>
+
+        <br />
+        <label>Hastane Telefon</label>
+        <input type="text" asp-for="HastaneTelefon" class="form-control" />
+        <span  asp-validation-for="HastaneTelefon" class="text-info"></span>
+
+        <br />
+    <label>Hastane Resim</label>
+    <input type="text" asp-for="HastaneResim" class="form-control" />
+    <span asp-validation-for="HastaneResim" class="text-info"></span>
+
+    <br />
+        <button class="btn btn-primary">Hizmet Güncelle</button>
+</form>
+
+

@@ -1,0 +1,34 @@
+﻿@model List<ResultHastaneDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordred">
+    <tr>
+        <th>#</th>
+        <th>Hastane Adı</th>
+        <th>Hastane Adresi</th>
+        <th>Hastane Telefon</th>
+        <th>Hastane Resim</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>@item.HastaneID</td>
+                <td>@item.HastaneAdi</td>
+                <td>@item.HastaneAdresi</td>
+                <td>@item.HastaneTelefon</td>
+                <td>@item.HastaneResim</td>
+                <td><a href="/Hastane/DeleteHastane/@item.HastaneID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Hastane/UpdateHastane/@item.HastaneID" class="btn btn-success">Güncelle</a></td>
+                
+            </tr>
+    }
+</table>
+<a href="/Hastane/AddHastane/" class="btn btn-info">Yeni hastane kaydı</a>
+

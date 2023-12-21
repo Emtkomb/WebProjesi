@@ -1,0 +1,26 @@
+﻿@model CreateHizmetDto
+@{
+    ViewData["Title"] = "AddHizmet";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+<form method="post">
+        <label>Hizmet İkon</label>
+        <input type="text" asp-for="HizmetIcon" class="form-control" />
+        <span  asp-validation-for="HizmetIcon" class="text-danger"></span>
+        <br />
+        <label>Hizmet Başlığı</label>
+        <input type="text" asp-for="HizmetTitle" class="form-control" />
+        <span  asp-validation-for="HizmetTitle" class="text-danger"></span>
+
+        <br />
+        <label>Açıklama</label>
+        <input type="text" asp-for="HizmetAciklama" class="form-control" />
+        <span  asp-validation-for="HizmetAciklama" class="text-danger"></span>
+
+        <br />
+        <button class="btn btn-primary">Hizmet Ekle</button>
+</form>
+
+

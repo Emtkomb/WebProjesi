@@ -1,0 +1,39 @@
+﻿@model CreateRandevuDto
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+@await Component.InvokeAsync("_HeadPartial")
+
+
+<body>
+
+    <!-- ################# Header Starts Here#######################--->
+    @await Component.InvokeAsync("_HeaderPartial")
+
+    @await Component.InvokeAsync("_RandevuCoverPartial")
+
+    @await Html.PartialAsync("/Views/Randevu/RandevuEkle.cshtml")
+
+
+
+
+
+
+
+
+
+    <!-- ################# Footer Starts Here#######################--->
+    @await Component.InvokeAsync("_Footer")
+
+
+
+</body>
+
+@await Component.InvokeAsync("_Script")
+
+
+</html>

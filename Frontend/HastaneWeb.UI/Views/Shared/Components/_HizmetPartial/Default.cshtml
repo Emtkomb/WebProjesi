@@ -1,0 +1,32 @@
+﻿@model List<ResultHizmetDto>
+
+<section class="key-features">
+        <div class="container">
+            <div class="inner-title">
+
+                <h2>Hizmetlerimiz</h2>
+                
+            </div>
+        @foreach(var item in Model)
+        { <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-key">
+                        <i class="@item.HizmetIcon"></i>
+                        <h5>@item.HizmetTitle</h5>
+                        <p>@item.HizmetAciklama</p>
+                    </div>
+                </div>
+
+            </div>
+            
+        }
+           
+
+
+
+
+
+
+        </div>
+
+    </section>
