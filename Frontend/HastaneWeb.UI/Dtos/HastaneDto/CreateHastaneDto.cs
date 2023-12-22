@@ -9,6 +9,6 @@ namespace HastaneWeb.UI.Dtos.HastaneDto
         public string HastaneAdresi { get; set; }
         public string HastaneTelefon { get; set; }
         public string HastaneResim { get; set; }
-        public List<Doktor> Doktorlar { get; set; }
+
     }
 }

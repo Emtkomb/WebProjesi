@@ -1,6 +1,9 @@
-﻿using HastaneWeb.UI.Dtos.DoktorDto;
+﻿using HastaneWeb.BusinessLayer.Concrete;
+using HastaneWeb.DataAccessLayer.EntityFramework;
+using HastaneWeb.UI.Dtos.DoktorDto;
 using HastaneWeb.UI.Models.Doktor;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -8,6 +11,7 @@ namespace HastaneWeb.UI.Controllers
 {
     public class DoktorController : Controller
     {
+
         private readonly IHttpClientFactory _httpClientFactory;
 
         public DoktorController(IHttpClientFactory httpClientFactory)
@@ -29,7 +33,8 @@ namespace HastaneWeb.UI.Controllers
         }
         [HttpGet]
         public IActionResult AddDoktor() {
-        
+
+
             return View();
         }
         [HttpPost]

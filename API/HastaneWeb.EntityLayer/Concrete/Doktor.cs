@@ -17,11 +17,9 @@ namespace HastaneWeb.EntityLayer.Concrete
         public string DoktorMail { get; set; }
         public DateTime GirisTarih { get; set; }
         public DateTime CikisTarih { get; set; }
-        public int HastaneID { get; set; }
-        public Hastane Hastane { get; set; }
         public int BirimID { get; set; }
         public Birim Birim { get; set; }
-        public List<Randevu> Randevular { get; set; }
+
 
 
 

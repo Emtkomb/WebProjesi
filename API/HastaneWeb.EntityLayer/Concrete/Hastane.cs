@@ -16,7 +16,7 @@ namespace HastaneWeb.EntityLayer.Concrete
         public string HastaneTelefon { get; set; }
         public string HastaneResim { get; set; }
 
-        public List<Doktor> Doktorlar{ get; set; }
+
 
 
 
