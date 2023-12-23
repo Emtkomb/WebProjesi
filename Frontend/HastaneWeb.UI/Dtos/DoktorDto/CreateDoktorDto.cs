@@ -6,12 +6,6 @@ namespace HastaneWeb.UI.Dtos.DoktorDto
     {
 
         public string DoktorName { get; set; }
-        public int HastaneID { get; set; }
-        public Hastane Hastane { get; set; }
-        public int BirimID { get; set; }
-        public Birim Birim { get; set; }
-
-
 
         public string DoktorTelefon { get; set; }
         public string DoktorMail { get; set; }

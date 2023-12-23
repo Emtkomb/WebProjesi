@@ -1,10 +1,7 @@
-﻿
-
-namespace HastaneWeb.UI.Dtos.RandevuDto
+﻿namespace HastaneWeb.UI.Dtos.RandevuDto
 {
-    public class CreateRandevuDto
+    public class ResultRandevuDto
     {
-
         public int RandevuID { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
@@ -16,6 +13,5 @@ namespace HastaneWeb.UI.Dtos.RandevuDto
         public string DoktorName { get; set; }
         public string Sikayet { get; set; }
         public string Status { get; set; }
-
     }
 }

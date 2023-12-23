@@ -28,14 +28,14 @@ namespace HastaneWeb.BusinessLayer.Concrete
             return _doktorDal.GetByID(id);
         }
 
-        public List<Doktor> TGetList()
-        {
-            return _doktorDal.GetList();
-        }
 
         public void TInsert(Doktor t)
         {
              _doktorDal.Insert(t);
+        }
+        public List<Doktor> TGetList()
+        {
+            return _doktorDal.GetList();
         }
 
         public void TUpdate(Doktor t)

@@ -12,7 +12,7 @@ namespace HastaneWeb.DataAccessLayer.EntityFramework
 {
     public class EfHizmetDal:GenericRepository<Hizmet>,IHizmetDal
     {
-        public EfHizmetDal(Context context):base(context) { }
-       
+        public EfHizmetDal(Context context) : base(context) { }
+
     }
 }

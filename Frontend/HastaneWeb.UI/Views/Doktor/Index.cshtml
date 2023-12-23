@@ -1,5 +1,4 @@
-﻿
-@model List<ResultDoktorDto>
+﻿@model List<ResultDoktorDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -9,8 +8,6 @@
     <tr>
         <th>#</th>
         <th>Doktor Adı:</th>
-        <th>Doktorun Hastaesi</th>
-        <th>Doktor Birimi</th>
         <th>Doktor Telefon</th>
         <th>Doktor Email</th>
         <th>Doktor Giriş Saati</th>
@@ -25,9 +22,6 @@
         <tr>
             <td>@item.DoktorID</td>
             <td>@item.DoktorName</td>
-            <td>@item.DoktorID</td>
-            <td>@item.HastaneID</td>
-            <td>@item.BirimID</td>
             <td>@item.DoktorTelefon</td>
             <td>@item.DoktorMail</td>
             <td>@item.GirisTarih</td>

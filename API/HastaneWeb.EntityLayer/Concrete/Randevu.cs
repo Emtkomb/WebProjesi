@@ -16,8 +16,12 @@ namespace HastaneWeb.EntityLayer.Concrete
         public string TelNo { get; set; }
         public DateTime RandevuGiris { get; set; }
         public DateTime RandevuCikis { get; set; }
+
+        public string Birim { get; set; }
+        public string DoktorName { get; set; }
+        public string Sikayet { get; set; }
         public string Status { get; set; }
-        public int DoktorID { get; set; }
+
 
 
     }

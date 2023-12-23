@@ -1,4 +1,5 @@
-﻿using HastaneWeb.EntityLayer.Concrete;
+﻿using HastaneWeb.DataAccessLayer.Concrete;
+using HastaneWeb.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace HastaneWeb.BusinessLayer.Abstract
 {
     public interface IDoktorService:IGenericService<Doktor>
     {
+        
     }
 }

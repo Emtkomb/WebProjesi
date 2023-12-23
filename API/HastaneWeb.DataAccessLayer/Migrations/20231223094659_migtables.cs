@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
-    public partial class add_Identity : Migration
+    public partial class migtables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,6 +51,85 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Birimler",
+                columns: table => new
+                {
+                    BirimID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BirimAdi = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Birimler", x => x.BirimID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Doktorlar",
+                columns: table => new
+                {
+                    DoktorID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DoktorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DoktorTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DoktorMail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GirisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Doktorlar", x => x.DoktorID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hastaneler",
+                columns: table => new
+                {
+                    HastaneID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HastaneAdi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HastaneAdresi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HastaneTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HastaneResim = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hastaneler", x => x.HastaneID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Hizmetler",
+                columns: table => new
+                {
+                    HizmetID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HizmetIcon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HizmetTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HizmetAciklama = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hizmetler", x => x.HizmetID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Randevular",
+                columns: table => new
+                {
+                    RandevuID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RandevuGiris = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RandevuCikis = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Randevular", x => x.RandevuID);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,6 +294,21 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Birimler");
+
+            migrationBuilder.DropTable(
+                name: "Doktorlar");
+
+            migrationBuilder.DropTable(
+                name: "Hastaneler");
+
+            migrationBuilder.DropTable(
+                name: "Hizmetler");
+
+            migrationBuilder.DropTable(
+                name: "Randevular");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

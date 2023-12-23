@@ -34,6 +34,7 @@ builder.Services.AddScoped<IBirimService, BirimManager>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
+
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("HastaneApiCors", opts =>

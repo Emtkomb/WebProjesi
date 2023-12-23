@@ -1,0 +1,59 @@
+﻿@model List<ResultRandevuDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+
+        <div class="card-body">
+            <div class="card-title">
+                <h4>Randevular</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Hasta</th>
+                            <th>Şehir</th>
+                            <th>Telefon</th>
+                            <th>Randevu Giriş</th>
+                            <th>Randevu Çıkış</th>
+                            <th>Birim</th>
+                            <th>Doktor</th>
+                            <th>Şikayet</th>
+                            <th>Durum</th>
+                            <th>Onayla</th>
+                            <th>İptal Et</th>
+                            <th>Beklet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                            @foreach(var item in Model)
+                            {
+                            count++;
+                            <tr>
+                            <td>@count</td>
+                            <td>@item.Name</td>
+                            <td>@item.City</td>
+                            <td>@item.TelNo</td>
+                            <td>@item.RandevuGiris</td>
+                            <td>@item.RandevuCikis</td>
+                            <td>@item.Birim</td>
+                            <td>@item.DoktorName</td>
+                            <td>@item.Sikayet</td>
+                            <td><span class="badge badge-primary px-2">@item.Status</span></td>
+                            <td><a href="#" class="btn btn-outline-primary">Onayla</a></td>
+                            <td><a href="#" class="btn btn-outline-danger">İptal Et</a></td>
+                            <td><a href="#" class="btn btn-outline-warning">Beklet</a></td>
+                            </tr>
+                                
+                            }
+                       
+
+                    </tbody>
+                </table>
+            </div>
+        </div>

@@ -1,5 +1,6 @@
 ﻿using HastaneWeb.BusinessLayer.Concrete;
 using HastaneWeb.DataAccessLayer.EntityFramework;
+using HastaneWeb.EntityLayer.Concrete;
 using HastaneWeb.UI.Dtos.DoktorDto;
 using HastaneWeb.UI.Models.Doktor;
 using Microsoft.AspNetCore.Mvc;

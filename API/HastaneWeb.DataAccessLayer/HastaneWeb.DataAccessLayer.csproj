@@ -7,6 +7,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20231207131210_yenirendevu.cs" />
+    <Compile Remove="Migrations\20231207131210_yenirendevu.Designer.cs" />
+    <Compile Remove="Migrations\20231207131325_yenirendevular.cs" />
+    <Compile Remove="Migrations\20231207131325_yenirendevular.Designer.cs" />
+    <Compile Remove="Migrations\20231207132951_yenirendevuekleme.cs" />
+    <Compile Remove="Migrations\20231207132951_yenirendevuekleme.Designer.cs" />
+    <Compile Remove="Migrations\20231207134507_yenirendevueklemesi.cs" />
+    <Compile Remove="Migrations\20231207134507_yenirendevueklemesi.Designer.cs" />
+    <Compile Remove="Migrations\20231208175234_migrandevu.cs" />
+    <Compile Remove="Migrations\20231208175234_migrandevu.Designer.cs" />
+    <Compile Remove="Migrations\20231209231020_hastane.cs" />
+    <Compile Remove="Migrations\20231209231020_hastane.Designer.cs" />
+    <Compile Remove="Migrations\20231209231600_hastanee.cs" />
+    <Compile Remove="Migrations\20231209231600_hastanee.Designer.cs" />
+    <Compile Remove="Migrations\20231209231939_hastanee1.cs" />
+    <Compile Remove="Migrations\20231209231939_hastanee1.Designer.cs" />
+    <Compile Remove="Migrations\20231212112221_mig123.cs" />
+    <Compile Remove="Migrations\20231212112221_mig123.Designer.cs" />
+    <Compile Remove="Migrations\20231212131343_mig321.cs" />
+    <Compile Remove="Migrations\20231212131343_mig321.Designer.cs" />
+    <Compile Remove="Migrations\20231212133307_migaddweb.cs" />
+    <Compile Remove="Migrations\20231212133307_migaddweb.Designer.cs" />
+    <Compile Remove="Migrations\20231212134407_sonmig.cs" />
+    <Compile Remove="Migrations\20231212134407_sonmig.Designer.cs" />
+    <Compile Remove="Migrations\20231223093742_migdegistir.cs" />
+    <Compile Remove="Migrations\20231223093742_migdegistir.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />

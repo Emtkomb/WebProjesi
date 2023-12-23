@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231128152443_add_Identity")]
-    partial class add_Identity
+    [Migration("20231223094659_migtables")]
+    partial class migtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,6 +134,23 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>
+                {
+                    b.Property<int>("BirimID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BirimID"), 1L, 1);
+
+                    b.Property<string>("BirimAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BirimID");
+
+                    b.ToTable("Birimler");
+                });
+
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
                 {
                     b.Property<int>("DoktorID")
@@ -142,9 +159,8 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoktorID"), 1L, 1);
 
-                    b.Property<string>("DoktorBirim")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("CikisTarih")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("DoktorMail")
                         .IsRequired()
@@ -157,6 +173,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.Property<string>("DoktorTelefon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("GirisTarih")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("DoktorID");
 
@@ -176,6 +195,10 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HastaneAdresi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HastaneResim")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -211,6 +234,41 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.HasKey("HizmetID");
 
                     b.ToTable("Hizmetler");
+                });
+
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Randevu", b =>
+                {
+                    b.Property<int>("RandevuID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RandevuID"), 1L, 1);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RandevuCikis")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("RandevuGiris")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RandevuID");
+
+                    b.ToTable("Randevular");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

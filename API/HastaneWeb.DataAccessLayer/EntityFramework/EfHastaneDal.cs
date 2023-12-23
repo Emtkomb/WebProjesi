@@ -12,7 +12,7 @@ namespace HastaneWeb.DataAccessLayer.EntityFramework
 {
     public class EfHastaneDal:GenericRepository<Hastane>,IHastaneDal
     {
-        public EfHastaneDal(Context context):base(context)
+        public EfHastaneDal(Context context) : base(context)
         {
 
         }

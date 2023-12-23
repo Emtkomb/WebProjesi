@@ -9,5 +9,6 @@ namespace HastaneWeb.DataAccessLayer.Abstract
 {
     public interface IDoktorDal:IGenericDal<Doktor>
     {
+   
     }
 }

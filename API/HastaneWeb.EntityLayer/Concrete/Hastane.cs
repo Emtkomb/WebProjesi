@@ -17,11 +17,5 @@ namespace HastaneWeb.EntityLayer.Concrete
         public string HastaneResim { get; set; }
 
 
-
-
-
-
-
-
     }
 }
