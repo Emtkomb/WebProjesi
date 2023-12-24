@@ -20,6 +20,7 @@ namespace HastaneWeb.UI.Mapping
             CreateMap<LoginUserDto,AppUser>().ReverseMap();
             CreateMap<CreateRandevuDto,Randevu>().ReverseMap();
             CreateMap<CreateBirimDto,Birim>().ReverseMap();
+            CreateMap<AppRovedRandevuDto,Randevu>().ReverseMap();
         }
     }
 }

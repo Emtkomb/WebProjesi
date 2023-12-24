@@ -33,7 +33,7 @@
 
                 <br />
                 <label>Doktor</label>
-                <input type="text" placeholder="Doktor Adı Giriniz" asp-for="DoktorName" class="form-control input-sm" />
+                @Html.DropDownListFor(x=>x.DoktorID,(List<SelectListItem>)ViewBag.v,new{ @class="from-control"})
 
                 <br />
                 <label>Şikayetiniz</label>

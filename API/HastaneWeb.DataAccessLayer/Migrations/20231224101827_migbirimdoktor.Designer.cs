@@ -4,6 +4,7 @@ using HastaneWeb.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231224101827_migbirimdoktor")]
+    partial class migbirimdoktor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -255,8 +257,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DoktorID")
-                        .HasColumnType("int");
+                    b.Property<string>("DoktorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -281,8 +284,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RandevuID");
-
-                    b.HasIndex("DoktorID");
 
                     b.ToTable("Randevular");
                 });
@@ -401,17 +402,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.Navigation("Birim");
                 });
 
-            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Randevu", b =>
-                {
-                    b.HasOne("HastaneWeb.EntityLayer.Concrete.Doktor", "Doktor")
-                        .WithMany("Randevular")
-                        .HasForeignKey("DoktorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doktor");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("HastaneWeb.EntityLayer.Concrete.AppRole", null)
@@ -466,11 +456,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>
                 {
                     b.Navigation("Doktorlar");
-                });
-
-            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
-                {
-                    b.Navigation("Randevular");
                 });
 #pragma warning restore 612, 618
         }

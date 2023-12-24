@@ -35,7 +35,7 @@ namespace HastaneWebApi.Controllers
             _RandevuService.TDelete(values);
             return Ok();
         }
-        [HttpPut]
+        [HttpPut("UpdateRandevu")]
         public IActionResult UpdateRandevu(Randevu Randevu)
         {
 
@@ -48,6 +48,18 @@ namespace HastaneWebApi.Controllers
         {
             var values = _RandevuService.TGetByID(id);
             return Ok(values);
+        }
+        [HttpPut("aaa")]
+        public IActionResult aaa(Randevu randevu)
+        {
+            _RandevuService.TRandevuStatusChange(randevu);
+            return Ok();
+        }
+        [HttpPut("bbb")]
+        public IActionResult bbb(int id)
+        {
+            _RandevuService.TRandevuStatusChange2(id);
+            return Ok();
         }
     }
 }

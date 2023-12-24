@@ -1,6 +1,7 @@
 ﻿using HastaneWeb.BusinessLayer.Concrete;
 using HastaneWeb.DataAccessLayer.EntityFramework;
 using HastaneWeb.EntityLayer.Concrete;
+using HastaneWeb.UI.Dtos.BirimDto;
 using HastaneWeb.UI.Dtos.DoktorDto;
 using HastaneWeb.UI.Models.Doktor;
 using Microsoft.AspNetCore.Mvc;
@@ -22,21 +23,24 @@ namespace HastaneWeb.UI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client=_httpClientFactory.CreateClient();
+
+            var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("http://localhost:5083/api/Doktor");
-            if(responseMessage.IsSuccessStatusCode) 
-            { 
-                var jsonData=await responseMessage.Content.ReadAsStringAsync();
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultDoktorDto>>(jsonData);
                 return View(values);
             }
             return View();
         }
         [HttpGet]
-        public IActionResult AddDoktor() {
+        public async Task<IActionResult> AddDoktor() {
+
 
 
             return View();
+     
         }
         [HttpPost]
         public async Task<IActionResult> AddDoktor(CreateDoktorDto model)

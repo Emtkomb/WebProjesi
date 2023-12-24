@@ -13,7 +13,7 @@ namespace HastaneWeb.UI.Dtos.RandevuDto
         public DateTime RandevuCikis { get; set; }
 
         public string Birim { get; set; }
-        public string DoktorName { get; set; }
+        public int DoktorID { get; set; }
         public string Sikayet { get; set; }
         public string Status { get; set; }
 
