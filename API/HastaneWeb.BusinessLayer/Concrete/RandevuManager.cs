@@ -38,15 +38,15 @@ namespace HastaneWeb.BusinessLayer.Concrete
             _randevuDal.Insert(t);
         }
 
-        public void TRandevuStatusChange(Randevu status)
-        {
-            _randevuDal.RandevuStatusChange(status);
-        }
+        //public void TRandevuStatusChange(Randevu status)
+        //{
+        //    _randevuDal.RandevuStatusChange(status);
+        //}
 
-        public void TRandevuStatusChange2(int id)
-        {
-           _randevuDal.RandevuStatusChange2(id);
-        }
+        //public void TRandevuStatusChange2(int id)
+        //{
+        //   _randevuDal.RandevuStatusChange2(id);
+        //}
 
         public void TUpdate(Randevu t)
         {

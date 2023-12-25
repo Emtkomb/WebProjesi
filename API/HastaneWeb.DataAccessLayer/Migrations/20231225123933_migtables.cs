@@ -54,19 +54,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Birimler",
-                columns: table => new
-                {
-                    BirimID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BirimAdi = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Birimler", x => x.BirimID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Doktorlar",
                 columns: table => new
                 {
@@ -76,7 +63,8 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     DoktorTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DoktorMail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GirisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Birimi = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,24 +100,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Hizmetler", x => x.HizmetID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Randevular",
-                columns: table => new
-                {
-                    RandevuID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RandevuGiris = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RandevuCikis = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Randevular", x => x.RandevuID);
                 });
 
             migrationBuilder.CreateTable(
@@ -238,6 +208,28 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Randevular",
+                columns: table => new
+                {
+                    RandevuID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DoktorID = table.Column<int>(type: "int", nullable: false),
+                    Sikayet = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Randevular", x => x.RandevuID);
+                    table.ForeignKey(
+                        name: "FK_Randevular_Doktorlar_DoktorID",
+                        column: x => x.DoktorID,
+                        principalTable: "Doktorlar",
+                        principalColumn: "DoktorID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -276,6 +268,11 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Randevular_DoktorID",
+                table: "Randevular",
+                column: "DoktorID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -296,12 +293,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Birimler");
-
-            migrationBuilder.DropTable(
-                name: "Doktorlar");
-
-            migrationBuilder.DropTable(
                 name: "Hastaneler");
 
             migrationBuilder.DropTable(
@@ -315,6 +306,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Doktorlar");
         }
     }
 }

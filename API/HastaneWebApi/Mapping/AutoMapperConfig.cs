@@ -12,7 +12,8 @@ namespace HastaneWebApi.Mapping
             CreateMap<Doktor,AddDoktorDto>();
 
             CreateMap<UpdateDoktorDto, Doktor>().ReverseMap();
-         
+
+
         }
     }
 }

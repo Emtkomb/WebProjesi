@@ -20,26 +20,23 @@
                 <label>Telefon</label>
                 <input type="text" placeholder="Telefon Numaranızı Giriniz" asp-for="TelNo" class="form-control input-sm" />
                 <br />
-
-
-                <label>Randevu Giriş Tarihi</label>
-                <input type="datetime-local" placeholder="Giriş Tarihini Seçiniz" asp-for="RandevuGiris" class="form-control input-sm" />
-                <br />
-                <label>Randevu Çıkış Tarihi</label>
-                <input type="datetime-local" placeholder="Çıkış Tarihini Seçiniz" asp-for="RandevuCikis" class="form-control input-sm" />
-                <br />
-                <label>Birim</label>
-                <input type="text" placeholder="Birim Seçiniz" asp-for="Birim" class="form-control input-sm" />
-
-                <br />
-                <label>Doktor</label>
+                              <label>Doktor</label>
                 @Html.DropDownListFor(x=>x.DoktorID,(List<SelectListItem>)ViewBag.v,new{ @class="from-control"})
 
                 <br />
                 <label>Şikayetiniz</label>
-                <input type="textarea" placeholder="Şİkayetinizi Giriniz" asp-for="Sikayet" class="form-control input-sm" />
+                <input type="textarea" placeholder="Şikayetinizi Giriniz" asp-for="Sikayet" class="form-control input-sm" />
 
                 <br />
+@*                <label>Randevu Giriş Tarihi</label>
+                <input type="datetime-local" placeholder="Giriş Tarihini Seçiniz" asp-for="RandevuGiris" class="form-control input-sm" />
+                <br />
+                <label>Randevu Çıkış Tarihi</label>
+                <input type="datetime-local" placeholder="Çıkış Tarihini Seçiniz" asp-for="RandevuCikis" class="form-control input-sm" />
+                <br />*@
+
+  
+
 
   
 

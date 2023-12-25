@@ -45,7 +45,7 @@ namespace HastaneWeb.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> RandevuEkle(CreateRandevuDto createRandevuDto)
         {
-            createRandevuDto.Status = "Onay Bekliyor";
+            //createRandevuDto.Status = "Onay Bekliyor";
             var client = _httpClientFactory.CreateClient();
             var jsonData=JsonConvert.SerializeObject(createRandevuDto);
             StringContent stringContent= new StringContent(jsonData,Encoding.UTF8,"application/json");

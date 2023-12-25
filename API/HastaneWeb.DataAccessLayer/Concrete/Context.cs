@@ -22,6 +22,6 @@ namespace HastaneWeb.DataAccessLayer.Concrete
         public DbSet<Hastane> Hastaneler { get; set; }
         public DbSet<Hizmet> Hizmetler { get; set; }
         public DbSet<Randevu> Randevular { get; set; }
-        public DbSet<Birim> Birimler { get; set; }
+        //public DbSet<Birim> Birimler { get; set; }
     }
 }

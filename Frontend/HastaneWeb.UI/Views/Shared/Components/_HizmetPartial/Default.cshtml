@@ -7,8 +7,9 @@
                 <h2>Hizmetlerimiz</h2>
                 
             </div>
+        <div class="row">
         @foreach(var item in Model)
-        { <div class="row">
+        {
                 <div class="col-md-4 col-sm-6">
                     <div class="single-key">
                         <i class="@item.HizmetIcon"></i>
@@ -17,9 +18,10 @@
                     </div>
                 </div>
 
-            </div>
+           
             
         }
+        </div>
            
 
 
