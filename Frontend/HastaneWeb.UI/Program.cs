@@ -4,6 +4,10 @@ using HastaneWeb.DataAccessLayer.Abstract;
 using HastaneWeb.DataAccessLayer.Concrete;
 using HastaneWeb.DataAccessLayer.EntityFramework;
 using HastaneWeb.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +30,24 @@ builder.Services.AddScoped<IBirimDal, EfBirimDal>();
 builder.Services.AddScoped<IBirimService, BirimManager>();
 
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
+
+
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
+builder.Services.AddMvc(config=>
+{
+    var policy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+
+});
+builder.Services.AddMvc();
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+//{
+//    x.LoginPath = "/Login/Index/";
+//}
+//);
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
@@ -46,5 +66,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+//using (var scope=app.Services.CreateScope())
+//{
+//    var roleManager = scope.ServiceProvider.GetRequiredService<AppRole<IdentityRole>>();
+//}
 
 app.Run();

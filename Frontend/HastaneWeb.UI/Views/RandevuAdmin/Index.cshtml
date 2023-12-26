@@ -1,4 +1,4 @@
-﻿@*@model List<ResultRandevuDto>
+﻿@model List<ResultRandevuDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -18,10 +18,7 @@
                             <th>Hasta</th>
                             <th>Şehir</th>
                             <th>Telefon</th>
-                            <th>Randevu Giriş</th>
-                            <th>Randevu Çıkış</th>
-                            <th>Birim</th>
-                            <th>Doktor</th>
+
                             <th>Şikayet</th>
                             <th>Durum</th>
                             <th>Onayla</th>
@@ -39,10 +36,7 @@
                             <td>@item.Name</td>
                             <td>@item.City</td>
                             <td>@item.TelNo</td>
-                            <td>@item.RandevuGiris</td>
-                            <td>@item.RandevuCikis</td>
-                            <td>@item.Birim</td>
-                            <td>@item.DoktorName</td>
+
                             <td>@item.Sikayet</td>
                             <td><span class="badge badge-primary px-2">@item.Status</span></td>
                             <td><a href="/RandevuAdmin/AppRovedRandevu/@item.RandevuID" class="btn btn-outline-primary">Onayla</a></td>
@@ -57,4 +51,3 @@
                 </table>
             </div>
         </div>
-*@

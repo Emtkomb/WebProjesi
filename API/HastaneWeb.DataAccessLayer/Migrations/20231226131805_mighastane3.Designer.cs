@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231225123933_migtables")]
-    partial class migtables
+    [Migration("20231226131805_mighastane3")]
+    partial class mighastane3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,6 +134,23 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>
+                {
+                    b.Property<int>("BirimID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BirimID"), 1L, 1);
+
+                    b.Property<string>("BirimAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BirimID");
+
+                    b.ToTable("Birimler");
+                });
+
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
                 {
                     b.Property<int>("DoktorID")
@@ -141,10 +158,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoktorID"), 1L, 1);
-
-                    b.Property<string>("Birimi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CikisTarih")
                         .HasColumnType("datetime2");
@@ -231,9 +244,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RandevuID"), 1L, 1);
 
-                    b.Property<int>("DoktorID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -242,13 +252,15 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TelNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RandevuID");
-
-                    b.HasIndex("DoktorID");
 
                     b.ToTable("Randevular");
                 });
@@ -356,17 +368,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Randevu", b =>
-                {
-                    b.HasOne("HastaneWeb.EntityLayer.Concrete.Doktor", "Doktor")
-                        .WithMany("Randevular")
-                        .HasForeignKey("DoktorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doktor");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("HastaneWeb.EntityLayer.Concrete.AppRole", null)
@@ -416,11 +417,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
-                {
-                    b.Navigation("Randevular");
                 });
 #pragma warning restore 612, 618
         }

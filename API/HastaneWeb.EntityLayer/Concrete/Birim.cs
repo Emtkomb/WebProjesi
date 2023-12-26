@@ -13,7 +13,7 @@ namespace HastaneWeb.EntityLayer.Concrete
         public int BirimID { get; set; }
         public string BirimAdi { get; set; }
 
-        public List<Doktor> Doktorlar { get; set;}
+
 
 
 

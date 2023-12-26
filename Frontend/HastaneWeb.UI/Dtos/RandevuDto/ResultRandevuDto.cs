@@ -10,9 +10,8 @@ namespace HastaneWeb.UI.Dtos.RandevuDto
         public string TelNo { get; set; }
 
 
-        public int DoktorID { get; set; }
-        public Doktor Doktor { get; set; }
         public string Sikayet { get; set; }
+        public string Status { get; set; }
 
     }
 }

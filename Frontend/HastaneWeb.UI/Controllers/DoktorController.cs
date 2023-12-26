@@ -37,9 +37,23 @@ namespace HastaneWeb.UI.Controllers
         [HttpGet]
         public async Task<IActionResult> AddDoktor() {
 
+            //var client = _httpClientFactory.CreateClient();
+            //var responseMessage = await client.GetAsync("http://localhost:5083/api/Birim");
 
+            //var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            //var values = JsonConvert.DeserializeObject<List<ResultBirimDto>>(jsonData);
+            //List<SelectListItem> values2 = (from x in values
+            //                                select new SelectListItem
+            //                                {
+            //                                    Text = x.BirimAdi,
+            //                                    Value = x.BirimID.ToString()
 
+            //                                }).ToList();
+            //ViewBag.v = values2;
             return View();
+
+
+
      
         }
         [HttpPost]

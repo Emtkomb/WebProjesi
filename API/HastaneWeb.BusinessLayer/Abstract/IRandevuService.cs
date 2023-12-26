@@ -9,7 +9,7 @@ namespace HastaneWeb.BusinessLayer.Abstract
 {
     public interface IRandevuService:IGenericService<Randevu>
     {
-        //void TRandevuStatusChange(Randevu status);
-        //void TRandevuStatusChange2(int id);
+        void TRandevuStatusChange(Randevu status);
+        void TRandevuStatusChange2(int id);
     }
 }

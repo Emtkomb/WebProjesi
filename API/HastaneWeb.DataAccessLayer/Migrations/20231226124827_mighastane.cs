@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
-    public partial class migtables : Migration
+    public partial class mighastane : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,6 +54,19 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Birimler",
+                columns: table => new
+                {
+                    BirimID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BirimAdi = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Birimler", x => x.BirimID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Doktorlar",
                 columns: table => new
                 {
@@ -63,8 +76,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     DoktorTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DoktorMail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GirisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Birimi = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -291,6 +303,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Birimler");
 
             migrationBuilder.DropTable(
                 name: "Hastaneler");

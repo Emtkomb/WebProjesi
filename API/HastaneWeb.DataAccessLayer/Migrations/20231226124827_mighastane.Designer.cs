@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20231225125310_migtables2")]
-    partial class migtables2
+    [Migration("20231226124827_mighastane")]
+    partial class mighastane
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,6 +134,23 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>
+                {
+                    b.Property<int>("BirimID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BirimID"), 1L, 1);
+
+                    b.Property<string>("BirimAdi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BirimID");
+
+                    b.ToTable("Birimler");
+                });
+
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
                 {
                     b.Property<int>("DoktorID")
@@ -141,10 +158,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoktorID"), 1L, 1);
-
-                    b.Property<string>("Birimi")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CikisTarih")
                         .HasColumnType("datetime2");
