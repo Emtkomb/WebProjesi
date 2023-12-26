@@ -1,4 +1,5 @@
-﻿@model CreateRandevuDto
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model Randevu
 <div class="row contact-rooo no-margin">
     <div class="container">
         <div class="row">
@@ -12,10 +13,10 @@
                 <input type="text" placeholder="Adınızı Giriniz" asp-for="Name" class="form-control input-sm" />
 
 
-                <label>Şehriniz</label>
+@*                <label>Şehriniz</label>
                 <input type="text" placeholder="Şehrinizi Giriniz" asp-for="City" class="form-control input-sm" />
 
-                <br />
+                <br />*@
 
                 <label>Telefon</label>
                 <input type="text" placeholder="Telefon Numaranızı Giriniz" asp-for="TelNo" class="form-control input-sm" />

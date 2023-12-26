@@ -1,10 +1,12 @@
 ﻿using HastaneWeb.UI.Dtos.BirimDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace HastaneWeb.UI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class BirimController : Controller
     {
       

@@ -1,11 +1,14 @@
 ﻿using HastaneWeb.UI.Dtos.HastaneDto;
 using HastaneWeb.UI.Models.Hastane;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Data;
 using System.Text;
 
 namespace HastaneWeb.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HastaneController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

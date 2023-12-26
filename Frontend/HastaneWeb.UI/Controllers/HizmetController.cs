@@ -1,10 +1,13 @@
 ﻿using HastaneWeb.UI.Dtos.HizmetDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Data;
 using System.Text;
 
 namespace HastaneWeb.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HizmetController : Controller
     {
 

@@ -32,16 +32,33 @@ builder.Services.AddScoped<IBirimService, BirimManager>();
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
 
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Þifre karmaþýklýðý ayarý
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 2;
+
+    // Diðer ayarlar
+   
+    
+    options.Lockout.AllowedForNewUsers = false;
+
+    // Diðer özelleþtirmeler
+    // ...
+});
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
-builder.Services.AddMvc(config=>
-{
-    var policy = new AuthorizationPolicyBuilder()
-    .RequireAuthenticatedUser()
-    .Build();
-    config.Filters.Add(new AuthorizeFilter(policy));
+//builder.Services.AddMvc(config=>
+//{
+//    var policy = new AuthorizationPolicyBuilder()
+//    .RequireAuthenticatedUser()
+//    .Build();
+//    config.Filters.Add(new AuthorizeFilter(policy));
 
-});
+//});
 builder.Services.AddMvc();
 //builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 //{

@@ -4,13 +4,16 @@ using HastaneWeb.EntityLayer.Concrete;
 using HastaneWeb.UI.Dtos.BirimDto;
 using HastaneWeb.UI.Dtos.DoktorDto;
 using HastaneWeb.UI.Models.Doktor;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Data;
 using System.Text;
 
 namespace HastaneWeb.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DoktorController : Controller
     {
 
