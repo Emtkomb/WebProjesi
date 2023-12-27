@@ -6,6 +6,6 @@ namespace HastaneWeb.UI.Dtos.BirimDto
     {
         public int BirimID { get; set; }
 
-        public string BirimAdi { get; set; }
+        public string Name { get; set; }
     }
 }

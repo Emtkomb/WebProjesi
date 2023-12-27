@@ -5,6 +5,6 @@ namespace HastaneWeb.UI.Dtos.BirimDto
     public class CreateBirimDto
     {
         [Required(ErrorMessage = "Birim Adı giriniz.")]
-        public string BirimAdi { get; set; }
+        public string Name { get; set; }
     }
 }

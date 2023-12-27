@@ -1,28 +1,39 @@
-﻿@model List<ResultBirimDto>
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model IEnumerable<Birim>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
 
-<table class="table table-bordred">
-    <tr>
+
+<table class="table table-sm table-bordered">
+	
+		<tr>
         <th>#</th>
         <th>Birim Adı</th>
-        <th>Sil</th>
         <th>Güncelle</th>
+        <th>Sil</th>
         <th></th>
     </tr>
-    @foreach (var item in Model)
-    {
-            <tr>
-                <td>@item.BirimID</td>
-                <td>@item.BirimAdi</td>
 
-                <td><a href="/Birim/DeleteBirim/@item.BirimID" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Birim/UpdateBirim/@item.BirimID" class="btn btn-success">Güncelle</a></td>
-            </tr>
-    }
+	<tbody>
+
+	
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.BirimID</td>
+				<td>@item.Name</td>
+				<td>
+					<td><a href="/Birim/UpdateBirim/@item.BirimID" class="btn btn-success">Güncelle</a></td>
+					<td><form asp-action="DeleteBirim" method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">
+						<input type="hidden" value="@item.BirimID" name="Id">
+						<button type="submit" class="btn btn-danger btn-sm">Sil</Button>
+					</form></td>
+				
+			</tr>
+		}
+	</tbody>
 </table>
 <a href="/Birim/AddBirim/" class="btn btn-info">Yeni Birim Girişi</a>
-
-

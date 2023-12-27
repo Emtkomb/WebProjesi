@@ -1,4 +1,5 @@
-﻿@model UpdateBirimDto
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model Birim
 @{
     ViewData["Title"] = "UpdateBirim";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -6,8 +7,8 @@
 <form method="post">
         <input type="hidden" asp-for="BirimID" />
         <label>Birim Adı</label>
-        <input type="text" asp-for="BirimAdi" class="form-control" />
-        <span  asp-validation-for="BirimAdi" class="text-info"></span>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span  asp-validation-for="Name" class="text-info"></span>
         <br />
 
         <button class="btn btn-primary">Birim Güncelle</button>

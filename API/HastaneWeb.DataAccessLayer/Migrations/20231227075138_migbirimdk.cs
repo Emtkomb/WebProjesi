@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
-    public partial class mighastane : Migration
+    public partial class migbirimdk : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,28 +59,11 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 {
                     BirimID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BirimAdi = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Birimler", x => x.BirimID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Doktorlar",
-                columns: table => new
-                {
-                    DoktorID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DoktorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DoktorTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DoktorMail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GirisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Doktorlar", x => x.DoktorID);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +95,22 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Hizmetler", x => x.HizmetID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Randevular",
+                columns: table => new
+                {
+                    RandevuID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Sikayet = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Randevular", x => x.RandevuID);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,24 +220,26 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Randevular",
+                name: "Doktorlar",
                 columns: table => new
                 {
-                    RandevuID = table.Column<int>(type: "int", nullable: false)
+                    DoktorID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TelNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DoktorID = table.Column<int>(type: "int", nullable: false),
-                    Sikayet = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DoktorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DoktorTelefon = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DoktorMail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GirisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CikisTarih = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BirimID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Randevular", x => x.RandevuID);
+                    table.PrimaryKey("PK_Doktorlar", x => x.DoktorID);
                     table.ForeignKey(
-                        name: "FK_Randevular_Doktorlar_DoktorID",
-                        column: x => x.DoktorID,
-                        principalTable: "Doktorlar",
-                        principalColumn: "DoktorID",
+                        name: "FK_Doktorlar_Birimler_BirimID",
+                        column: x => x.BirimID,
+                        principalTable: "Birimler",
+                        principalColumn: "BirimID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -282,9 +283,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Randevular_DoktorID",
-                table: "Randevular",
-                column: "DoktorID");
+                name: "IX_Doktorlar_BirimID",
+                table: "Doktorlar",
+                column: "BirimID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -305,7 +306,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Birimler");
+                name: "Doktorlar");
 
             migrationBuilder.DropTable(
                 name: "Hastaneler");
@@ -323,7 +324,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Doktorlar");
+                name: "Birimler");
         }
     }
 }

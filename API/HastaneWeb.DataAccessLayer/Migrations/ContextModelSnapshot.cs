@@ -140,7 +140,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BirimID"), 1L, 1);
 
-                    b.Property<string>("BirimAdi")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -156,6 +156,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DoktorID"), 1L, 1);
+
+                    b.Property<int>("BirimID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CikisTarih")
                         .HasColumnType("datetime2");
@@ -176,6 +179,8 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("DoktorID");
+
+                    b.HasIndex("BirimID");
 
                     b.ToTable("Doktorlar");
                 });
@@ -366,6 +371,17 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
+                {
+                    b.HasOne("HastaneWeb.EntityLayer.Concrete.Birim", "Birim")
+                        .WithMany("Doktorlar")
+                        .HasForeignKey("BirimID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Birim");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.HasOne("HastaneWeb.EntityLayer.Concrete.AppRole", null)
@@ -415,6 +431,11 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>
+                {
+                    b.Navigation("Doktorlar");
                 });
 #pragma warning restore 612, 618
         }

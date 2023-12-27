@@ -11,6 +11,8 @@ namespace HastaneWeb.UI.Dtos.DoktorDto
         public string DoktorMail { get; set; }
         public DateTime GirisTarih { get; set; }
         public DateTime CikisTarih { get; set; }
+        public int BirimId { get; set; }
+        public Birim Birim { get; set; }
 
 
 
