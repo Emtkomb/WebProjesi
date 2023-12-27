@@ -9,9 +9,10 @@ namespace HastaneWeb.EntityLayer.Concrete
 {
     public class Birim
     {
+        [Key]
 
         public int BirimID { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public  List<Doktor> Doktorlar { get; set; } = new List<Doktor>();
 

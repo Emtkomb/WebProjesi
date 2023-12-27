@@ -51,7 +51,7 @@ namespace HastaneWeb.UI.Controllers
                 .Select(p => new { Id = p.BirimID, Display = $"{p.Name} - {p.BirimID}" })
                 .ToList();
 
-            ViewData["Birimler"] = new SelectList(birimList, "BirimID", "Name");
+            ViewData["Birimler"] = new SelectList(birimList, "Id", "Display");
 
             return View();
 
@@ -95,7 +95,7 @@ namespace HastaneWeb.UI.Controllers
             //}
             //return View();
         }
-        public async Task<IActionResult> DeleteDoktor(int id)
+        public async Task<IActionResult> DeleteDoktor(int? id)
         {
             if (id == null || _context.Doktorlar == null)
             {
@@ -121,7 +121,7 @@ namespace HastaneWeb.UI.Controllers
         }
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Doktorlar == null)
             {
@@ -137,7 +137,7 @@ namespace HastaneWeb.UI.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
-        public async Task<IActionResult> UpdateDoktor(int id)
+        public async Task<IActionResult> UpdateDoktor(int? id)
         {
             if (id == null || _context.Doktorlar == null)
             {
@@ -155,7 +155,7 @@ namespace HastaneWeb.UI.Controllers
                 .Select(p => new { Id = p.BirimID, Display = $"{p.Name} - {p.BirimID}" })
                 .ToList();
 
-            ViewData["BirimID"] = new SelectList(birimList, "BirimID", "BirimID");
+            ViewData["BirimID"] = new SelectList(birimList, "Id", "Display");
             // --------------------------------
 
             return View(doktor);
@@ -172,7 +172,7 @@ namespace HastaneWeb.UI.Controllers
         }
         [HttpPost]
        
-        public async Task<IActionResult> UpdateDoktor(int id, [Bind("DoktorID,DoktorName,DoktorMail,GirisTarihi,CikisTarihi,BirimID")] Doktor doktor)
+        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorMail,GirisTarihi,CikisTarihi,BirimID")] Doktor doktor)
         {
             if (id != doktor.DoktorID)
             {
@@ -212,7 +212,7 @@ namespace HastaneWeb.UI.Controllers
             //    return View();
 
         }
-        private bool DoktorExists(int id)
+        private bool DoktorExists(int? id)
         {
             return (_context.Doktorlar?.Any(e => e.DoktorID == id)).GetValueOrDefault();
         }

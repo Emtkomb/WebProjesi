@@ -9,7 +9,7 @@ namespace HastaneWeb.EntityLayer.Concrete
 {
     public class Doktor
     {
-
+        [Key]
         public int DoktorID { get; set; }
         public string DoktorName { get; set; }
 
@@ -19,7 +19,8 @@ namespace HastaneWeb.EntityLayer.Concrete
         public DateTime CikisTarih { get; set; }
 
         public int BirimID { get; set; }
-        public Birim Birim { get; set; }
+
+        public Birim? Birim { get; set; }
 
 
 

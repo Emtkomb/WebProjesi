@@ -64,7 +64,7 @@ namespace HastaneWeb.UI.Controllers
             //return View();
         }
 
-        public async Task<IActionResult> DeleteBirim(int id)
+        public async Task<IActionResult> DeleteBirim(int? id)
         {
             var birim = await _context.Birimler
                 .FirstOrDefaultAsync(m => m.BirimID == id);
@@ -85,7 +85,7 @@ namespace HastaneWeb.UI.Controllers
 
         [HttpPost, ActionName("DeleteBirim")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Birimler == null)
             {
@@ -101,7 +101,7 @@ namespace HastaneWeb.UI.Controllers
             return RedirectToAction(nameof(Index));
         }
         [HttpGet]
-        public async Task<IActionResult> UpdateBirim(int id)
+        public async Task<IActionResult> UpdateBirim(int? id)
         {
             if (id == null || _context.Birimler == null)
             {
@@ -126,7 +126,7 @@ namespace HastaneWeb.UI.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateBirim(int id, [Bind("BirimID,Name")] Birim birim)
+        public async Task<IActionResult> UpdateBirim(int? id, [Bind("BirimID,Name")] Birim birim)
         {
             if (id != birim.BirimID)
             {
@@ -169,7 +169,7 @@ namespace HastaneWeb.UI.Controllers
             //return View();
 
         }
-        private bool PoliklinikExists(int id)
+        private bool PoliklinikExists(int? id)
         {
             return (_context.Birimler?.Any(e => e.BirimID == id)).GetValueOrDefault();
         }

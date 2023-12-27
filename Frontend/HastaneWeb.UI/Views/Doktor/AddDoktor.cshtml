@@ -1,6 +1,7 @@
 ﻿@using HastaneWeb.EntityLayer.Concrete;
 @model Doktor
 @{
+   
     ViewData["Title"] = "AddDoktor";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
@@ -24,6 +25,7 @@
         <input  type="datetime-local" asp-for="CikisTarih" class="form-control" />
         <br />
     <label>Birimi</label>
+  
     <select asp-for="BirimID" class="form-control" asp-items="ViewBag.Birimler"></select>
     <span asp-validation-for="BirimID" class="text-danger"></span>
 
@@ -32,8 +34,3 @@
         <button class="btn btn-primary">Doktor Ekle</button>
 </form>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

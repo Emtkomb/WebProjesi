@@ -19,7 +19,7 @@ namespace HastaneWebApi.Controllers
         [HttpGet]
         public IActionResult DoktorList()
         {
-            var values=_doktorService.TGetList();
+            var values = _doktorService.TGetList();
             return Ok(values);
         }
         [HttpPost]
@@ -31,18 +31,18 @@ namespace HastaneWebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DoktorSil(int id)
         {
-            var values= _doktorService.TGetByID(id);
+            var values = _doktorService.TGetByID(id);
             _doktorService.TDelete(values);
             return Ok();
         }
         [HttpPut]
         public IActionResult DoktorGüncelle(Doktor doktor)
         {
-            
+
             _doktorService.TUpdate(doktor);
             return Ok();
         }
-    
+
         [HttpGet("{id}")]
         public IActionResult DoktorGetir(int id)
         {
