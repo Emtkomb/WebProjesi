@@ -146,7 +146,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     b.HasKey("BirimID");
 
-                    b.ToTable("Birimler");
+                    b.ToTable("Birimler", (string)null);
                 });
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
@@ -182,7 +182,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     b.HasIndex("BirimID");
 
-                    b.ToTable("Doktorlar");
+                    b.ToTable("Doktorlar", (string)null);
                 });
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Hastane", b =>
@@ -211,7 +211,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     b.HasKey("HastaneID");
 
-                    b.ToTable("Hastaneler");
+                    b.ToTable("Hastaneler", (string)null);
                 });
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Hizmet", b =>
@@ -236,7 +236,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     b.HasKey("HizmetID");
 
-                    b.ToTable("Hizmetler");
+                    b.ToTable("Hizmetler", (string)null);
                 });
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Randevu", b =>
@@ -265,7 +265,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     b.HasKey("RandevuID");
 
-                    b.ToTable("Randevular");
+                    b.ToTable("Randevular", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

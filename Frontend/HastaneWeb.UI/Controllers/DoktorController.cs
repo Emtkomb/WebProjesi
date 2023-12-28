@@ -45,7 +45,7 @@ namespace HastaneWeb.UI.Controllers
 
         }
         [HttpGet]
-        public async Task<IActionResult> AddDoktor()
+        public IActionResult AddDoktor()
         {
             var birimList = _context.Birimler
                 .Select(p => new { Id = p.BirimID, Display = $"{p.Name} - {p.BirimID}" })
@@ -75,7 +75,7 @@ namespace HastaneWeb.UI.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> AddDoktor([Bind("DoktorID,DoktorName,DoktorMail,GirisTarihi,CikisTarihi,BirimID")] Doktor doktor)
+        public async Task<IActionResult> AddDoktor([Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID")] Doktor doktor)
         {
             if (ModelState.IsValid)
             {
@@ -103,8 +103,8 @@ namespace HastaneWeb.UI.Controllers
             }
 
             var doktor = await _context.Doktorlar
-                .Include(d => d.Birim)
-                .FirstOrDefaultAsync(m => m.DoktorID == id);
+                .Include(x => x.Birim)
+                .FirstOrDefaultAsync(x => x.DoktorID == id);
             if (doktor == null)
             {
                 return NotFound();
@@ -119,7 +119,7 @@ namespace HastaneWeb.UI.Controllers
             //}
             //return View();
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteDoktor")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int? id)
         {
@@ -152,7 +152,7 @@ namespace HastaneWeb.UI.Controllers
 
             // Buraya ekleyeceğiniz kısım
             var birimList = _context.Birimler
-                .Select(p => new { Id = p.BirimID, Display = $"{p.Name} - {p.BirimID}" })
+                .Select(x => new { Id = x.BirimID, Display = $"{x.Name} - {x.BirimID}" })
                 .ToList();
 
             ViewData["BirimID"] = new SelectList(birimList, "Id", "Display");
@@ -172,7 +172,7 @@ namespace HastaneWeb.UI.Controllers
         }
         [HttpPost]
        
-        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorMail,GirisTarihi,CikisTarihi,BirimID")] Doktor doktor)
+        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID")] Doktor doktor)
         {
             if (id != doktor.DoktorID)
             {
@@ -214,7 +214,7 @@ namespace HastaneWeb.UI.Controllers
         }
         private bool DoktorExists(int? id)
         {
-            return (_context.Doktorlar?.Any(e => e.DoktorID == id)).GetValueOrDefault();
+            return (_context.Doktorlar?.Any(x => x.DoktorID == id)).GetValueOrDefault();
         }
     }
 }

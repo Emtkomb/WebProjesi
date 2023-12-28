@@ -1,4 +1,5 @@
-﻿@model List<ResultHastaneDto>
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model IEnumerable<Hastane>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -24,8 +25,11 @@
                 <td>@item.HastaneAdresi</td>
                 <td>@item.HastaneTelefon</td>
                 <td>@item.HastaneResim</td>
-                <td><a href="/Hastane/DeleteHastane/@item.HastaneID" class="btn btn-danger">Sil</a></td>
                 <td><a href="/Hastane/UpdateHastane/@item.HastaneID" class="btn btn-success">Güncelle</a></td>
+					<td><form asp-action="DeleteHastane" method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">
+						<input type="hidden" value="@item.HastaneID" name="Id">
+						<button type="submit" class="btn btn-danger btn-sm">Sil</Button>
+					</form></td>
                 
             </tr>
     }

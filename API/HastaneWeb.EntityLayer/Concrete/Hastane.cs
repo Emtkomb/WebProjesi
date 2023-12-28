@@ -15,6 +15,7 @@ namespace HastaneWeb.EntityLayer.Concrete
         public string HastaneAdresi { get; set; }
         public string HastaneTelefon { get; set; }
         public string HastaneResim { get; set; }
+        public List<Birim> Birimler { get; set; } = new List<Birim>();
 
 
     }

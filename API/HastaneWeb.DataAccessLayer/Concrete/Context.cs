@@ -34,6 +34,13 @@ namespace HastaneWeb.DataAccessLayer.Concrete
                 .WithMany(p => p.Doktorlar)
                 .HasForeignKey(d => d.BirimID);
 
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Birim>()
+                .HasOne(d => d.Hastane)
+                .WithMany(p => p.Birimler)
+                .HasForeignKey(d => d.HastaneID);
+
             //modelBuilder.Entity<Randevu>()
             //    .HasOne(r => r.Doktor)
             //    .WithMany()

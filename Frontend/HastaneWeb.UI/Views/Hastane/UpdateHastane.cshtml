@@ -1,4 +1,5 @@
-﻿@model UpdateHastaneDto
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model Hastane
 @{
     ViewData["Title"] = "UpdateHastane";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -25,7 +26,7 @@
     <span asp-validation-for="HastaneResim" class="text-info"></span>
 
     <br />
-        <button class="btn btn-primary">Hizmet Güncelle</button>
+        <button class="btn btn-primary">Hastane Güncelle</button>
 </form>
 
 

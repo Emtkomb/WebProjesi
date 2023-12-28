@@ -91,10 +91,10 @@ namespace HastaneWeb.UI.Controllers
             {
                 return Problem("Entity set birimler  is null.");
             }
-            var poliklinik = await _context.Birimler.FindAsync(id);
-            if (poliklinik != null)
+            var birim = await _context.Birimler.FindAsync(id);
+            if (birim != null)
             {
-                _context.Birimler.Remove(poliklinik);
+                _context.Birimler.Remove(birim);
             }
 
             await _context.SaveChangesAsync();
@@ -108,12 +108,12 @@ namespace HastaneWeb.UI.Controllers
                 return NotFound();
             }
 
-            var poliklinik = await _context.Birimler.FindAsync(id);
-            if (poliklinik == null)
+            var birim = await _context.Birimler.FindAsync(id);
+            if (birim == null)
             {
                 return NotFound();
             }
-            return View(poliklinik);
+            return View(birim);
             //var client = _httpClientFactory.CreateClient();
             //var responseMessage = await client.GetAsync($"http://localhost:5083/api/Birim/{id}");
             //if (responseMessage.IsSuccessStatusCode)
@@ -142,7 +142,7 @@ namespace HastaneWeb.UI.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PoliklinikExists(birim.BirimID))
+                    if (!BirimExists(birim.BirimID))
                     {
                         return NotFound();
                     }
@@ -169,7 +169,7 @@ namespace HastaneWeb.UI.Controllers
             //return View();
 
         }
-        private bool PoliklinikExists(int? id)
+        private bool BirimExists(int? id)
         {
             return (_context.Birimler?.Any(e => e.BirimID == id)).GetValueOrDefault();
         }
