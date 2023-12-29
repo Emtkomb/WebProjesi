@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HastaneWeb.DataAccessLayer.Concrete
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     { //IdentityDbContext<AppUser, AppRole, int>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

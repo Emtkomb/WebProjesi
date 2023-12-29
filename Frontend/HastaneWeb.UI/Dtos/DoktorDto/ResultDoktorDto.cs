@@ -8,6 +8,7 @@ namespace HastaneWeb.UI.Dtos.DoktorDto
         public string DoktorName { get; set; }
        public string DoktorTelefon { get; set; }
         public string DoktorMail { get; set; }
+        public string DoktorResim { get; set; }
         public DateTime GirisTarih { get; set; }
         public DateTime CikisTarih { get; set; }
 

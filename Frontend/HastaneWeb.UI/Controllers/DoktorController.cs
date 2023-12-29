@@ -44,7 +44,7 @@ namespace HastaneWeb.UI.Controllers
                 .Select(p => new { Id = p.BirimID, Display = $"{p.Name} - {p.BirimID}" })
                 .ToList();
             var hastaneList = _context.Hastaneler
-                .Select(p => new { Id = p.HastaneID, Display = $"{p.HastaneAdi} - {p.HastaneAdi}" })
+                .Select(p => new { Id = p.HastaneID, Display = $"{p.HastaneAdi} - {p.HastaneID}" })
                 .ToList();
 
             ViewData["Birimler"] = new SelectList(birimList, "Id", "Display");
@@ -73,7 +73,7 @@ namespace HastaneWeb.UI.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> AddDoktor([Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID,HastaneID")] Doktor doktor)
+        public async Task<IActionResult> AddDoktor([Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,DoktorResim,GirisTarih,CikisTarih,BirimID,HastaneID")] Doktor doktor)
         {
             if (ModelState.IsValid)
             {
@@ -175,7 +175,7 @@ namespace HastaneWeb.UI.Controllers
         }
         [HttpPost]
        
-        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID,HastaneID")] Doktor doktor)
+        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,DoktorResim,GirisTarih,CikisTarih,BirimID,HastaneID")] Doktor doktor)
         {
             if (id != doktor.DoktorID)
             {

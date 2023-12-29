@@ -15,6 +15,8 @@ namespace HastaneWeb.EntityLayer.Concrete
 
         public string? DoktorTelefon { get; set; }
         public string? DoktorMail { get; set; }
+
+        public string? DoktorResim { get; set; } 
         public DateTime? GirisTarih { get; set; }
         public DateTime? CikisTarih { get; set; }
 
