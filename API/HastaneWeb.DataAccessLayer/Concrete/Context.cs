@@ -41,6 +41,7 @@ namespace HastaneWeb.DataAccessLayer.Concrete
                 .WithMany(p => p.Birimler)
                 .HasForeignKey(d => d.HastaneID);
 
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Randevu>()
                 .HasOne(r => r.Doktor)
                 .WithMany(p => p.Randevular)

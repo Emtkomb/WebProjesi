@@ -55,7 +55,7 @@ namespace HastaneWeb.UI.Controllers
             {
                 _context.Add(randevu);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Default");
             }
             ViewData["DoktorID"] = new SelectList(_context.Doktorlar, "DoktorID", "DoktorName", randevu.DoktorID);
             return View(randevu);

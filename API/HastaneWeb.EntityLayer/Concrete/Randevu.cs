@@ -11,15 +11,15 @@ namespace HastaneWeb.EntityLayer.Concrete
     {
         [Key]
         public int RandevuID { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         //public string City { get; set; }
-        public string TelNo { get; set; }
+        public string? TelNo { get; set; }
 
-        public DateTime RandevuTarihi { get; set; }
-        public string Sikayet { get; set; }
+        public DateTime? RandevuTarihi { get; set; }
+        public string? Sikayet { get; set; }
 
-        public int DoktorID { get; set; }
-        public Doktor Doktor { get; set; }
+        public int? DoktorID { get; set; }
+        public Doktor? Doktor { get; set; }
 
 
 
