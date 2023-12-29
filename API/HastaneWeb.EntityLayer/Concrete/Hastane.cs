@@ -9,13 +9,14 @@ namespace HastaneWeb.EntityLayer.Concrete
 {
     public class Hastane
     {
-
-        public int HastaneID { get; set; }
-        public string HastaneAdi { get; set; }
-        public string HastaneAdresi { get; set; }
-        public string HastaneTelefon { get; set; }
-        public string HastaneResim { get; set; }
-        public List<Birim> Birimler { get; set; } = new List<Birim>();
+		[Key]
+		public int? HastaneID { get; set; }
+        public string? HastaneAdi { get; set; }
+        public string? HastaneAdresi { get; set; }
+        public string? HastaneTelefon { get; set; }
+        public string? HastaneResim { get; set; }
+        public List<Birim>? Birimler { get; set; } = new List<Birim>();
+        public List<Doktor>? Doktorlar { get; set; } = new List<Doktor>();
 
 
     }

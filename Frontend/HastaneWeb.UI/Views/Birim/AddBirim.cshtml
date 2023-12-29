@@ -1,4 +1,5 @@
-﻿@model CreateBirimDto
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model Birim
 @{
     ViewData["Title"] = "AddBirim";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -9,6 +10,10 @@
         <input type="text" asp-for="Name" class="form-control" />
         <span  asp-validation-for="Name" class="text-danger"></span>
         <br />
+    <label>Birimi</label>
+
+    <select asp-for="HastaneID" class="form-control" asp-items="ViewBag.Hastaneler"></select>
+    <span asp-validation-for="HastaneID" class="text-danger"></span>
 
         <button class="btn btn-primary">Birim Ekle</button>
 </form>

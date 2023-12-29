@@ -1,11 +1,29 @@
 ﻿@using HastaneWeb.EntityLayer.Concrete;
 @model Randevu
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+@await Component.InvokeAsync("_HeadPartial")
+
+
+<body>
+
+    <!-- ################# Header Starts Here#######################--->
+    @await Component.InvokeAsync("_HeaderPartial")
+
+    @await Component.InvokeAsync("_RandevuCoverPartial")
+
+
 
 <div class="row contact-rooo no-margin">
     <div class="container">
         <div class="row">
 
-           <form method="post" asp-action="RandevuEkle">
+           <form method="post" asp-action="AddRandevu">
         <label>Hasta Adı</label>
         <input type="text" asp-for="Name" class="form-control" />
         <br />
@@ -15,10 +33,10 @@
         <input type="text" asp-for="TelNo" class="form-control" />
         <br />
         <label>Randevu Tarihi</label>
-        <input type="text" asp-for="RandevuTarihi" class="form-control" />
+        <input type="datetime-local" asp-for="RandevuTarihi" class="form-control" />
         <br />
         <label>Hasta Şikayeti</label>
-        <input type="datetime-local" asp-for="Sikayet" class="form-control" />
+        <input type="text" asp-for="Sikayet" class="form-control" />
         <br />
 
     <label>Doktor Adı</label>
@@ -38,3 +56,22 @@
     </div>
 
 </div>
+
+
+
+
+
+
+
+
+    <!-- ################# Footer Starts Here#######################--->
+    @await Component.InvokeAsync("_Footer")
+
+
+
+</body>
+
+@await Component.InvokeAsync("_Script")
+
+
+</html>

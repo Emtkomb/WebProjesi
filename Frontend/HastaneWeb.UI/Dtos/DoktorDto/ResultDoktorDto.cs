@@ -11,7 +11,7 @@ namespace HastaneWeb.UI.Dtos.DoktorDto
         public DateTime GirisTarih { get; set; }
         public DateTime CikisTarih { get; set; }
 
-        public int BirimId { get; set; }
+        public int BirimID { get; set; }
         public Birim Birim { get; set; } = new Birim();
 
     }

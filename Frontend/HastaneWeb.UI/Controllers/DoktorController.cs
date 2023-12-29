@@ -1,18 +1,11 @@
-﻿using HastaneWeb.BusinessLayer.Concrete;
-using HastaneWeb.DataAccessLayer.Concrete;
-using HastaneWeb.DataAccessLayer.EntityFramework;
+﻿using HastaneWeb.DataAccessLayer.Concrete;
 using HastaneWeb.EntityLayer.Concrete;
-using HastaneWeb.UI.Dtos.BirimDto;
-using HastaneWeb.UI.Dtos.DoktorDto;
-using HastaneWeb.UI.Dtos.HizmetDto;
-using HastaneWeb.UI.Models.Doktor;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System.Data;
-using System.Text;
+
 
 namespace HastaneWeb.UI.Controllers
 {
@@ -31,7 +24,7 @@ namespace HastaneWeb.UI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var context = _context.Doktorlar.Include(d => d.Birim);
+            var context = _context.Doktorlar.Include(d => d.Birim).ThenInclude(b => b.Hastane);
             return View(await context.ToListAsync());
             //var client = _httpClientFactory.CreateClient();
             //var responseMessage = await client.GetAsync("http://localhost:5083/api/Doktor");
@@ -50,8 +43,13 @@ namespace HastaneWeb.UI.Controllers
             var birimList = _context.Birimler
                 .Select(p => new { Id = p.BirimID, Display = $"{p.Name} - {p.BirimID}" })
                 .ToList();
+            var hastaneList = _context.Hastaneler
+                .Select(p => new { Id = p.HastaneID, Display = $"{p.HastaneAdi} - {p.HastaneAdi}" })
+                .ToList();
 
             ViewData["Birimler"] = new SelectList(birimList, "Id", "Display");
+            ViewData["Hastaneler"] = new SelectList(hastaneList, "Id", "Display");
+           
 
             return View();
 
@@ -75,7 +73,7 @@ namespace HastaneWeb.UI.Controllers
 
         }
         [HttpPost]
-        public async Task<IActionResult> AddDoktor([Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID")] Doktor doktor)
+        public async Task<IActionResult> AddDoktor([Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID,HastaneID")] Doktor doktor)
         {
             if (ModelState.IsValid)
             {
@@ -84,6 +82,7 @@ namespace HastaneWeb.UI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BirimID"] = new SelectList(_context.Birimler, "BirimID", "Name", doktor.BirimID);
+            ViewData["Hastaneler"] = new SelectList(_context.Hastaneler, "HastaneID", "HastaneAdi", doktor.Hastane.HastaneID);
             return View(doktor);
             //var client = _httpClientFactory.CreateClient();
             //var jsonData = JsonConvert.SerializeObject(model);
@@ -152,10 +151,14 @@ namespace HastaneWeb.UI.Controllers
 
             // Buraya ekleyeceğiniz kısım
             var birimList = _context.Birimler
-                .Select(x => new { Id = x.BirimID, Display = $"{x.Name} - {x.BirimID}" })
+                .Select(x => new { Id = x.BirimID, Display = $"{x.Name} - {x.HastaneID}" })
                 .ToList();
 
+            var hastaneList = _context.Hastaneler
+               .Select(p => new { Id = p.HastaneID, Display = $"{p.HastaneAdi} - {p.HastaneAdi}" })
+               .ToList();
             ViewData["BirimID"] = new SelectList(birimList, "Id", "Display");
+            ViewData["Hastaneler"] = new SelectList(hastaneList, "Id", "Display");
             // --------------------------------
 
             return View(doktor);
@@ -172,7 +175,7 @@ namespace HastaneWeb.UI.Controllers
         }
         [HttpPost]
        
-        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID")] Doktor doktor)
+        public async Task<IActionResult> UpdateDoktor(int? id, [Bind("DoktorID,DoktorName,DoktorTelefon,DoktorMail,GirisTarih,CikisTarih,BirimID,HastaneID")] Doktor doktor)
         {
             if (id != doktor.DoktorID)
             {
@@ -199,7 +202,8 @@ namespace HastaneWeb.UI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BirimID"] = new SelectList(_context.Birimler, "BirimID", "BirimID", doktor.BirimID);
+            ViewData["BirimID"] = new SelectList(_context.Birimler, "BirimID", "Name", doktor.BirimID);
+            ViewData["Hastaneler"] = new SelectList(_context.Hastaneler, "HastaneID", "HastaneAdi", doktor.Hastane.HastaneID);
             return View(doktor);
             //    var client = _httpClientFactory.CreateClient();
             //    var jsonData = JsonConvert.SerializeObject(model); 

@@ -28,7 +28,9 @@
   
     <select asp-for="BirimID" class="form-control" asp-items="ViewBag.Birimler"></select>
     <span asp-validation-for="BirimID" class="text-danger"></span>
-
+    <label >Hastane Adı</label>
+    <select asp-for="HastaneID" class="form-control" asp-items="ViewBag.Hastaneler"></select>
+    <span asp-validation-for="HastaneID" class="text-danger"></span>
 
 
         <button class="btn btn-primary">Doktor Ekle</button>

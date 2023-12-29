@@ -12,6 +12,7 @@
 		<tr>
         <th>#</th>
         <th>Birim Adı</th>
+		<th>Hastane Adı</th>
         <th>Güncelle</th>
         <th>Sil</th>
         <th></th>
@@ -25,6 +26,7 @@
 			<tr>
 				<td>@item.BirimID</td>
 				<td>@item.Name</td>
+				<td>@item.Hastane.HastaneAdi</td>
 				<td>
 					<td><a href="/Birim/UpdateBirim/@item.BirimID" class="btn btn-success">Güncelle</a></td>
 					<td><form asp-action="DeleteBirim" method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">

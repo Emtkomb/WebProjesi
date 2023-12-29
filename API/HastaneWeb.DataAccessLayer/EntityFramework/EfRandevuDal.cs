@@ -21,20 +21,7 @@ namespace HastaneWeb.DataAccessLayer.EntityFramework
         //}
         public EfRandevuDal(Context context) : base(context) { }
 
-        public void RandevuStatusChange(Randevu status)
-        {
-            var context = new Context();
-            var values = context.Randevular.Where(x => x.RandevuID == status.RandevuID).FirstOrDefault();
-            values.Status = "Onaylandı";
-            context.SaveChanges();
-        }
 
-        public void RandevuStatusChange2(int id)
-        {
-            var context = new Context();
-            var values = context.Randevular.Find(id);
-            values.Status = "Onaylandı";
-            context.SaveChanges();
-        }
+        
     }
 }

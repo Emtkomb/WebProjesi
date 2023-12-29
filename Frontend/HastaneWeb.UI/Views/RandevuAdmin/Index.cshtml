@@ -1,4 +1,55 @@
-﻿@model List<ResultRandevuDto>
+﻿@using HastaneWeb.EntityLayer.Concrete;
+@model IEnumerable<Randevu>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+
+<table class="table table-sm table-bordered">
+    <tr>
+        <th>#</th>
+
+        <th>Hasta Adı</th>
+        <th>Hasta Numarası</th>
+        <th>Randevu Tarihi</th>
+        <th>Şikayet</th>
+        <th>Doktor Adı</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+
+
+
+        <th></th>
+    </tr>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.RandevuID</td>
+                <td>@item.Name</td>
+                <td>@item.TelNo</td>
+                <td>@item.RandevuTarihi</td>
+                <td>@item.Sikayet</td>
+                <td>@item.Doktor.DoktorName</td>
+      
+
+
+                	<td><a href="/Randevu/UpdateRandevu/@item.DoktorID" class="btn btn-success">Güncelle</a></td>
+            <td><form asp-action="DeleteRandevu" method="post" onsubmit="return confirm('emin misiniz')" style="display: inline-block;">
+            <input type="hidden" value="@item.RandevuID" name="Id">
+            <button type="submit" class="btn btn-danger btn-sm">Sil</Button>
+            </form></td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@model List<ResultRandevuDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -51,3 +102,4 @@
                 </table>
             </div>
         </div>
+*@

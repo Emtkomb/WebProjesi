@@ -9,7 +9,6 @@ namespace HastaneWeb.DataAccessLayer.Abstract
 {
     public interface IRandevuDal:IGenericDal<Randevu>
     {
-        void RandevuStatusChange(Randevu status);
-        void RandevuStatusChange2(int id);
+       
     }
 }

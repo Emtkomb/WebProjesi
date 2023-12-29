@@ -18,10 +18,148 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace HastaneWeb.UI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RandevuController : Controller
     {
+        private readonly Context _context;
 
+        public RandevuController(Context context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+
+            var context = _context.Randevular.Include(d => d.Doktor);
+            return View(await context.ToListAsync());
+        
+
+        }
+        [HttpGet]
+        public IActionResult AddRandevu()
+        {
+            var doktorList = _context.Doktorlar
+                            .Select(p => new { Id = p.DoktorID, Display = $"{p.DoktorName} - {p.DoktorID}" })
+                            .ToList();
+
+            ViewData["Doktorlar"] = new SelectList(doktorList, "Id", "Display");
+
+            return PartialView();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddRandevu([Bind("RandevuID,Name,TelNo,RandevuTarihi,Sikayet,DoktorID")] Randevu randevu)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                _context.Add(randevu);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["DoktorID"] = new SelectList(_context.Doktorlar, "DoktorID", "DoktorName", randevu.DoktorID);
+            return View(randevu);
+
+        }
+
+        public async Task<IActionResult> DeleteRandevu(int? id)
+        {
+
+            if (id == null || _context.Randevular == null)
+            {
+                return NotFound();
+            }
+
+            var randevu = await _context.Randevular
+                .Include(x => x.Doktor)
+                .FirstOrDefaultAsync(x => x.RandevuID == id);
+            if (randevu == null)
+            {
+                return NotFound();
+            }
+
+            return View(randevu);
+  
+        }
+
+        [HttpPost, ActionName("DeleteRandevu")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            if (_context.Randevular == null)
+            {
+                return Problem("Entity set Randevuler  is null.");
+            }
+            var randevu = await _context.Randevular.FindAsync(id);
+            if (randevu != null)
+            {
+                _context.Randevular.Remove(randevu);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public async Task<IActionResult> UpdateRandevu(int? id)
+        {
+            if (id == null || _context.Doktorlar == null)
+            {
+                return NotFound();
+            }
+
+            var randevu = await _context.Randevular.FindAsync(id);
+            if (randevu == null)
+            {
+                return NotFound();
+            }
+
+            // Buraya ekleyeceğiniz kısım
+            var doktorList = _context.Doktorlar
+                .Select(x => new { Id = x.DoktorID, Display = $"{x.DoktorName} - {x.DoktorID}" })
+                .ToList();
+
+            ViewData["DoktorID"] = new SelectList(doktorList, "Id", "Display");
+            return View(randevu);
+     
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateRandevu(int? id, [Bind("RandevuID,Name,DoktorID")] Randevu randevu)
+        {
+            if (id != randevu.RandevuID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(randevu);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RandevuExists(randevu.RandevuID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["DoktorID"] = new SelectList(_context.Doktorlar, "DoktorID", "DoktorName", randevu.DoktorID);
+            return View(randevu);
+           
+
+        }
+        private bool RandevuExists(int? id)
+        {
+            return (_context.Randevular?.Any(e => e.RandevuID == id)).GetValueOrDefault();
+        }
 
         ////RandevuManager randevuManager = new RandevuManager(new EfRandevuDal());
         //private readonly IHttpClientFactory _httpClientFactory;
@@ -71,33 +209,9 @@ namespace HastaneWeb.UI.Controllers
         //    return RedirectToAction("Index", "Default");
         //}
 
-        private readonly IRandevuService _randevuService;
 
-        public RandevuController(IRandevuService randevuService)
-        {
-            _randevuService = randevuService;
-        }
 
-        public IActionResult Index()
-        {
-            var values = _randevuService.TGetList();
-            return View(values);
-        }
-        [HttpGet]
-        public IActionResult RandevuEkle()
-        {
-            return View();
-        }
-     
-     
-        [HttpPost]
-        public IActionResult RandevuEkle(Randevu randevu)
-        {
 
-            _randevuService.TInsert(randevu);
-            return RedirectToAction("Index");
 
-        }
-        
     }
 }

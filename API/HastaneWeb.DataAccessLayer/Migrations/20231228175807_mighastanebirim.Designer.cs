@@ -4,6 +4,7 @@ using HastaneWeb.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneWeb.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231228175807_mighastanebirim")]
+    partial class mighastanebirim
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,14 +71,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.Property<DateTime?>("GirisTarih")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("HastaneID")
-                        .HasColumnType("int");
-
                     b.HasKey("DoktorID");
 
                     b.HasIndex("BirimID");
-
-                    b.HasIndex("HastaneID");
 
                     b.ToTable("Doktorlar");
                 });
@@ -139,15 +136,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RandevuID"), 1L, 1);
 
-                    b.Property<int>("DoktorID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("RandevuTarihi")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Sikayet")
                         .IsRequired()
@@ -162,8 +153,6 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RandevuID");
-
-                    b.HasIndex("DoktorID");
 
                     b.ToTable("Randevular");
                 });
@@ -183,24 +172,7 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .WithMany("Doktorlar")
                         .HasForeignKey("BirimID");
 
-                    b.HasOne("HastaneWeb.EntityLayer.Concrete.Hastane", "Hastane")
-                        .WithMany("Doktorlar")
-                        .HasForeignKey("HastaneID");
-
                     b.Navigation("Birim");
-
-                    b.Navigation("Hastane");
-                });
-
-            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Randevu", b =>
-                {
-                    b.HasOne("HastaneWeb.EntityLayer.Concrete.Doktor", "Doktor")
-                        .WithMany("Randevular")
-                        .HasForeignKey("DoktorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Doktor");
                 });
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>
@@ -208,16 +180,9 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                     b.Navigation("Doktorlar");
                 });
 
-            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Doktor", b =>
-                {
-                    b.Navigation("Randevular");
-                });
-
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Hastane", b =>
                 {
                     b.Navigation("Birimler");
-
-                    b.Navigation("Doktorlar");
                 });
 #pragma warning restore 612, 618
         }

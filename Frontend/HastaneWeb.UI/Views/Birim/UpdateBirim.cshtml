@@ -10,6 +10,9 @@
         <input type="text" asp-for="Name" class="form-control" />
         <span  asp-validation-for="Name" class="text-info"></span>
         <br />
+    <label>Hastane Adı</label>
+    <select asp-for="HastaneID" class="form-control" asp-items="ViewBag.HastaneID"></select>
+    <span asp-validation-for="HastaneID" class="text-danger"></span>
 
         <button class="btn btn-primary">Birim Güncelle</button>
 </form>
