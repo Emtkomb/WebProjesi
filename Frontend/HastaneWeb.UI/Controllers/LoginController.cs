@@ -40,7 +40,7 @@ namespace HastaneWeb.UI.Controllers
                         // Admin kullanıcı ise Admin sayfasına yönlendir
                         return RedirectToAction("Index", "Doktor");
                     }
-                    else if (await _userManager.IsInRoleAsync(user, "Member"))
+                    else if (await _userManager.IsInRoleAsync(user, "Hasta"))
                     {
                         // Member kullanıcı ise Member sayfasına yönlendir
                         return RedirectToAction("Index", "Default");

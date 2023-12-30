@@ -30,6 +30,7 @@ namespace HastaneWeb.UI.Controllers
                 Name = createNewUserDto.Name,
                 PhoneNumber = createNewUserDto.TelNo,
                 City= createNewUserDto.City,
+          
                 Surname = createNewUserDto.Surname,
                 UserName = createNewUserDto.Username
             };

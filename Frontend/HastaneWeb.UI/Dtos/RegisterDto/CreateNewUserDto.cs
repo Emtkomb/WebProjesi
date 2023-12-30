@@ -11,6 +11,7 @@ namespace HastaneWeb.UI.Dtos.RegisterDto
 
         [Required(ErrorMessage = "Şehir alanını giriniz.")]
         public string City { get; set; }
+     
         [Required(ErrorMessage = "Kullanıcı adı alanını giriniz.")]
         public string Username { get; set; }
         [Required(ErrorMessage = "Telefon numarası  giriniz.")]

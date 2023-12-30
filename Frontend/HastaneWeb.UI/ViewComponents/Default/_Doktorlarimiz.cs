@@ -1,6 +1,8 @@
-﻿using HastaneWeb.UI.Dtos.DoktorDto;
+﻿using HastaneWeb.DataAccessLayer.Concrete;
+using HastaneWeb.UI.Dtos.DoktorDto;
 using HastaneWeb.UI.Models.Doktor;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Net.Http;
 
@@ -10,6 +12,8 @@ namespace HastaneWeb.UI.ViewComponents.Default
     
     public class _Doktorlarimiz:ViewComponent
     {
+
+    
         private readonly IHttpClientFactory _httpClientFactory;
 
         public _Doktorlarimiz(IHttpClientFactory httpClientFactory)
