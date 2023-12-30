@@ -34,3 +34,42 @@
     </div>
 
 </section>
+
+@*@model List<ResultHastaneDto>
+
+
+
+
+
+    <section id="our-testimonial" class="padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="300ms">
+                        <span></span>
+                        <h2 class="darkcolor">Hizmetlerimiz</h2>
+                    </div>
+                </div>
+            </div>
+          <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div id="testimonial-slider" class="owl-carousel">
+                         @foreach(var item in Model)
+        {
+            <div class="item">
+            <div class="testimonial-wrapp"> <span class="quoted"><i class="fa fa-quote-right"></i></span>
+              <div class="testimonial-text">
+                <p class="bottom40">@item.HastaneResim</p>
+              </div>
+              <div class="testimonial-photo"><img alt="" src="images/testimonial-1.jpg"></div>
+              <h4 class="darkcolor">@item.HastaneAdi</h4>
+              <small class="defaultcolor">@item.HastaneAdresi</small> </div>
+          </div>
+                       
+                        }
+                    
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>*@

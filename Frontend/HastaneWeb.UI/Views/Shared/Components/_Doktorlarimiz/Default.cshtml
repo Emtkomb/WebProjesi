@@ -1,43 +1,39 @@
 ﻿
 @model List<ResultDoktorDto>
 
-<section class="our-team">
-    <div class="container">
-        <div class="inner-title">
-          <u><h2><a name="Doktorlarimiz">Doktorlarımız</a></h2> </u>
-       
-
-        </div>
-        <div class="row team-member">
-        @foreach(var item in Model)
-        {
-            
-                <div class="col-md-3 col-sm-6">
-                    <div class="user-card">
-                        <div class="userar">
-                            <img src="@item.DoktorResim" />
-                        </div>
-                        <div class="detfs">
-                            <p>@item.DoktorName </p>
-                          
-
-                            
-                            <p>@item.DoktorTelefon</p>
-
-                            <p>@item.DoktorMail</p>
 
 
-                        </div>
+
+
+    <section id="our-testimonial" class="padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="300ms">
+                        <span></span>
+                        <h2 class="darkcolor">Doktorlarımız</h2>
                     </div>
                 </div>
-
-
-
-           
-
-        }
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div id="testimonial-slider" class="owl-carousel">
+                         @foreach(var item in Model)
+        {
+                        <div class="item">
+                            <div class="testimonial-wrapp">
+                                <span class="quoted"><i class="fa fa-quote-right"></i></span>
+                                <div class="testimonial-text">
+                                        <img src="@item.DoktorResim" />
+                                </div>
+                                <div class="testimonial-photo"><img alt="" src="images/testimonial-1.jpg"></div>
+                                <h4 class="darkcolor">@item.DoktorName</h4>
+                                <small class="defaultcolor">@item.DoktorTelefon</small>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-    </div>
-</section>
+    </section>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HastaneWeb.UI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
