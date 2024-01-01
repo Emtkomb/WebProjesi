@@ -10,7 +10,7 @@ using System.Text;
 
 namespace HastaneWeb.UI.Controllers
 {
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     public class BirimController : Controller
     {
 

@@ -1,0 +1,28 @@
+﻿@model HastaneWeb.UI.Areas.Hasta.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UserLayout/_UserLayout.cshtml";
+}
+
+<h1>Profil Düzenleme Sayfası</h1>
+<form method="post">
+    @Html.Label("Adınız")
+    <input type="text" asp-for="name" class="form-control" />
+    <br />
+    @Html.Label("Soy Adınız")
+    <input type="text" asp-for="surName" class="form-control" />
+    <br />
+    @Html.Label("Şehriniz")
+    <input type="text" asp-for="city" class="form-control" />
+    <br />
+    @Html.Label("Şifreniz")
+    <input type="text" asp-for="password" class="form-control" />
+    <br />
+    @Html.Label("Şifre Tekrar")
+    <input type="text" asp-for="confirmPassword" class="form-control" />
+    <br />
+    @Html.Label("Telefonunuz")
+    <input type="text" asp-for="phoneNumber" class="form-control" />
+    <br />
+    <button  class="btn btn-primary">Bilgileri Güncelle</button>
+</form>

@@ -252,11 +252,11 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RandevuID"), 1L, 1);
 
-                    b.Property<int?>("DoktorID")
+                    b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("DoktorID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("RandevuTarihi")
                         .HasColumnType("datetime2");
@@ -268,6 +268,8 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RandevuID");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("DoktorID");
 
@@ -403,9 +405,15 @@ namespace HastaneWeb.DataAccessLayer.Migrations
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Randevu", b =>
                 {
+                    b.HasOne("HastaneWeb.EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Randevular")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("HastaneWeb.EntityLayer.Concrete.Doktor", "Doktor")
                         .WithMany("Randevular")
                         .HasForeignKey("DoktorID");
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Doktor");
                 });
@@ -459,6 +467,11 @@ namespace HastaneWeb.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.AppUser", b =>
+                {
+                    b.Navigation("Randevular");
                 });
 
             modelBuilder.Entity("HastaneWeb.EntityLayer.Concrete.Birim", b =>

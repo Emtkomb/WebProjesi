@@ -1,4 +1,4 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 <header>
     <div class="header-top">
         <div class="container">
@@ -26,8 +26,14 @@
                         <li><a href="."></a></li>
                         <li><a href="."></a></li>
                         <li><a href="."></a></li>
-                        <li><a href="/Default/Index/">Anasayfa</a></li>
-                        <li><a href="/Randevu/AddRandevu/">Randevu Al</a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+
+                        <li><a href="/Default/Index/">@localizer["Anasayfa"]</a></li>
+                       
+                            <li><a href="/Login/Index/">@localizer["Randevu Al"]</a></li>
+                       
+                        
                   
                         <li class="icons dropdown d-none d-md-flex">
                             <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
@@ -36,14 +42,16 @@
                             <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
                                 <div class="dropdown-content-body">
                                     <ul>
-                                        <li><a href="javascript:void()">Türkçe </a><img src="~/turkey.png" /></i></li>
-                                        <li><a href="javascript:void()">English </a><img src="~/english.png" /></li>
+                                        <li><a asp-controller ="Default" asp-action="Index">Türkçe </a><img src="~/turkey.png" /></i></li>
+                                        <li><a asp-controller="Default" asp-action="Index" asp-route-culture="en">English </a><img src="~/english.png" /></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li><a href="/Login/Index/" Margin-left: auto;>Giriş Yap</a></li>
-
+                    
+                            <li><a href="/Login/Index/">Giriş Yap</a></li>
+                    
+                       
                     </ul>
                 </div>
             </div>

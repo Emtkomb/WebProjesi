@@ -37,4 +37,8 @@
     <ProjectReference Include="..\..\API\HastaneWeb.EntityLayer\HastaneWeb.EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Hasta\Data\" />
+  </ItemGroup>
+
 </Project>

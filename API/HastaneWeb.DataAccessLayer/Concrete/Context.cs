@@ -24,7 +24,7 @@ namespace HastaneWeb.DataAccessLayer.Concrete
         public DbSet<Hizmet> Hizmetler { get; set; }
         public DbSet<Randevu> Randevular { get; set; }
         public DbSet<Birim> Birimler { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -46,6 +46,11 @@ namespace HastaneWeb.DataAccessLayer.Concrete
                 .HasOne(r => r.Doktor)
                 .WithMany(p => p.Randevular)
                 .HasForeignKey(r => r.DoktorID);
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Randevu>()
+                .HasOne(r => r.AppUser)
+                .WithMany(p => p.Randevular)
+                .HasForeignKey(r => r.AppUserId);
         }
     }
 }

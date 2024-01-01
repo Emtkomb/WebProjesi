@@ -1,4 +1,5 @@
-﻿<div class="doctor-message">
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<div class="doctor-message">
         <div class="inner-lay">
             <div class="container">
                 <div class="row">
@@ -8,12 +9,12 @@
                         <img src="~/free-hospital-medical/assets/images/Talha.png" alt="">
                     </div>
                     <div class="col-md-6 col-sm-12 doc-det">
-                        <h2>Merhaba ben Doktor Talha Baş</h2>
+                        <h2>@localizer["Merhaba ben Doktor Talha Baş"]</h2>
                         <span>Tokatta Klinik Psikolog</span>
 
-                        <p>Lorem Ipsum is simply text of the Lorem Ipsum is simply my text of the printing and Ipsum is simply text of the Ipsum is simply text of thetypesetting Ipsum is simply text of the stry simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply text of the Lorem Ipsum is simply my text of </p>
+                    <p>@localizer["Ben dünyanın en iyi doktoruyum"] </p>
 
-                        <h4>Buradan Ulaşabilirsiniz : +90 530 902 16 58</h4>
+                        <h4>@localizer["Buradan Ulaşabilirsiniz"] : +90 530 902 16 58</h4>
                     </div>
                 </div>
             </div>

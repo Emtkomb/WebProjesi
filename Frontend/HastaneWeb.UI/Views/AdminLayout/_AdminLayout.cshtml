@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @{
     Layout = null;
 }
@@ -20,7 +21,48 @@
         @await Html.PartialAsync("/Views/AdminLayout/HeaderPartial.cshtml")
 
 
-        @await Html.PartialAsync("/Views/AdminLayout/SidebarPartial.cshtml")
+       @* @await Html.PartialAsync("/Views/AdminLayout/SidebarPartial.cshtml")*@
+
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a href="/Doktor/" aria-expanded="false">
+                            <i class="fa fa-user-md"></i><span class="nav-text">@localizer["Doktorlar"]</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Hastane/" aria-expanded="false">
+                            <i class="fa fa-hospital-o"></i><span class="nav-text">@localizer["Hastanelerimiz"]</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Hizmet/" aria-expanded="false">
+                            <i class="fa fa-medkit"></i><span class="nav-text">@localizer["Hizmetlerimiz"]</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Birim/" aria-expanded="false">
+                            <i class="fa fa-stethoscope"></i><span class="nav-text">@localizer["Birimlerimiz"]</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/RandevuAdmin/" aria-expanded="false">
+                            <i class="fa fa-calendar"></i><span class="nav-text">@localizer["Randevular"]</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Default/Index/" aria-expanded="false">
+                            <i class="fa fa-home"></i><span class="nav-text">@localizer["Hastane Sayfasına Git"]</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
         <div class="content-body">
 
      

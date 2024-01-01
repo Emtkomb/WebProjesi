@@ -4,6 +4,7 @@ using HastaneWeb.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,18 @@ namespace HastaneWeb.BusinessLayer.Concrete
         {
             _randevuDal = randevuDal;
         }
+
+        public List<Randevu> GetListRandevu(int id)
+        {
+        
+            return _randevuDal.GetListByFilter(x => x.AppUserId == id);
+
+        }
+
+        //public List<Randevu> GetByFilter(Expression<Func<Randevu, bool>> filter)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public void TDelete(Randevu t)
         {

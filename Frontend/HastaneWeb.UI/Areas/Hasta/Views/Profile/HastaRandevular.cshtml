@@ -1,0 +1,28 @@
+﻿@using HastaneWeb.EntityLayer.Concrete
+@model IEnumerable<Randevu>
+@{
+    ViewData["Title"] = "HastaRandevular";
+    Layout = "~/Views/UserLayout/_UserLayout.cshtml";
+}
+
+<h1>Randevularım</h1>
+<table class="table table-bordred">
+    <tr>
+        <th>#</th>
+        <th>Doktorum</th>
+
+        <th>Randevu Tarihim</th>
+       
+        
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.RandevuID</td>
+            <td>@item.Doktor.DoktorName</td>
+            <td>@item.RandevuTarihi</td>
+        </tr>
+    }
+</table>
+
+

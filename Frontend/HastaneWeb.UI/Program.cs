@@ -4,12 +4,13 @@ using HastaneWeb.DataAccessLayer.Abstract;
 using HastaneWeb.DataAccessLayer.Concrete;
 using HastaneWeb.DataAccessLayer.EntityFramework;
 using HastaneWeb.EntityLayer.Concrete;
-using HastaneWeb.UI.Service;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.Extensions.Options;
 using System.Globalization;
@@ -36,6 +37,14 @@ builder.Services.AddScoped<IBirimDal, EfBirimDal>();
 builder.Services.AddScoped<IBirimService, BirimManager>();
 
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+
+// dik desteði kýsmý
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
 
 builder.Services.AddMvc(config =>
 {
@@ -66,30 +75,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LoginPath = "/Login/Index/";
 }
 );
-#region Localizer
-builder.Services.AddSingleton<LanguageService>();
-builder.Services.AddLocalization(options=> options.ResourcesPath="Resources");
-builder.Services.AddMvc().AddViewLocalization().AddDataAnnotationsLocalization(options=>
-options.DataAnnotationLocalizerProvider=(type,factory)=>
-{
-    var assemblyName = new AssemblyName(typeof(SharedResource).GetTypeInfo().Assembly.FullName);
-    
-    return  factory.Create(nameof(SharedResource), assemblyName.Name);
-});
-builder.Services.Configure<RequestLocalizationOptions>(options =>
-{
-    var supportCultures = new List<CultureInfo>
-    {
-    new CultureInfo("tr-TR"),
-    new CultureInfo("en-US")
-    };
-    options.DefaultRequestCulture = new RequestCulture(culture: "tr-TR", uiCulture: "tr-TR");
-    options.SupportedCultures=supportCultures;
-    options.SupportedUICultures=supportCultures;
-    options.RequestCultureProviders.Insert(0, new QueryStringRequestCultureProvider());
 
-});
-#endregion
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
 //builder.Services.AddMvc(config=>
@@ -119,14 +105,23 @@ app.UseStaticFiles();
 
 
 
-app.UseAuthentication();
 
-app.UseStatusCodePagesWithReExecute("/ErrorPAge/Error404", "?code={0}");
-app.UseHttpsRedirection();
-app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
-app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
+app.UseStatusCodePagesWithReExecute("/ErrorPAge/Error404", "?code={0}");
+app.UseHttpsRedirection();
+
+app.UseRouting();
+var supportedCultures = new[] { "en", "tr" };
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0]).AddSupportedCultures(supportedCultures).AddSupportedCultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
+
+
+
+
+
 
 app.MapControllerRoute(
     name: "default",
@@ -135,5 +130,14 @@ app.MapControllerRoute(
 //{
 //    var roleManager = scope.ServiceProvider.GetRequiredService<AppRole<IdentityRole>>();
 //}
+app.UseAuthorization();
+app.UseAuthentication();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

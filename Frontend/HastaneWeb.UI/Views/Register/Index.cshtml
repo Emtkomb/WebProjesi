@@ -1,4 +1,4 @@
-﻿@model CreateNewUserDto
+﻿@*@model CreateNewUserDto
 @{
     Layout = null;
 }
@@ -103,8 +103,81 @@
     <script src="~/adminweb/js/gleek.js"></script>
     <script src="~/adminweb/js/styleSwitcher.js"></script>
 </body>
-</html>
+</html>*@
+@model CreateNewUserDto
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+		<!-- LINEARICONS -->
+    <link rel="stylesheet" href="~/colorlib-regform-26/fonts/linearicons/style.css">
+		
+		<!-- STYLE CSS -->
+    <link rel="stylesheet" href="~/colorlib-regform-26/css/style.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+            <img src="~/colorlib-regform-26/images/image-1.png" alt="" class="image-1">
+            <form class="mt-5 mb-5 login-input" method="post">
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="İsim" asp-for="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Soy isim" asp-for="Surname">
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Şehir" asp-for="City">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" placeholder="Kullanıcı adı" asp-for="Username">
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-phone-handset"></span>
+                    <input type="text" class="form-control" placeholder="Telefon no" asp-for="TelNo">
+                    <span asp-validation-for="TelNo" class="text-danger"></span>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Şifre" asp-for="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" placeholder="Şifre tekrar" asp-for="ConfirmPassword">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <button class="btn login-form__btn submit w-100">Kayıt ol</button>
+                <p class="mt-5 login-form__footer">Bir hesabın var mı <a href="/Login/Index/" class="text-primary">Oturum aç  </a> şimdi</p>
+            </form>
+
+            <img src="~/colorlib-regform-26/images/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+
+    <script src="~/colorlib-regform-26/js/jquery-3.3.1.min.js"></script>
+    <script src="~/colorlib-regform-26/js/main.js"></script>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
 
 
 

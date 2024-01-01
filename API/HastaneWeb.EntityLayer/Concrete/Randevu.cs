@@ -11,7 +11,8 @@ namespace HastaneWeb.EntityLayer.Concrete
     {
         [Key]
         public int RandevuID { get; set; }
-        public string? Name { get; set; }
+        public int? AppUserId { get; set; }
+        public AppUser? AppUser { get; set; }
         //public string City { get; set; }
         public string? TelNo { get; set; }
 

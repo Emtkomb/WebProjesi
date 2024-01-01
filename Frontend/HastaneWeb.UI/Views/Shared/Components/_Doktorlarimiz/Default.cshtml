@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @model List<ResultDoktorDto>
 
 
@@ -7,14 +8,7 @@
 
     <section id="our-testimonial" class="padding">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 text-center">
-                    <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="300ms">
-                        <span></span>
-                        <h2 class="darkcolor">Doktorlarımız</h2>
-                    </div>
-                </div>
-            </div>
+
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <div id="testimonial-slider" class="owl-carousel">

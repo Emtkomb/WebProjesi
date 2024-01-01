@@ -1,10 +1,11 @@
-﻿@model List<ResultHastaneDto>
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@model List<ResultHastaneDto>
 
 <section class="key-features">
     <div class="container">
         <div class="inner-title">
 
-            <u><h2><a name="Hastanelerimiz">Hastanelerimiz</a></h2> </u>
+            @*<u><h2><a name="Hastanelerimiz">@localizer["Hastanelerimiz"]</a></h2> </u>*@
         </div>
         <div class="row">
             @foreach (var item in Model)

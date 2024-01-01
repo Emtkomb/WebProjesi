@@ -1,4 +1,5 @@
-﻿
+﻿  @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @{
     Layout = null;
 }
@@ -16,22 +17,62 @@
 
 
     <!-- ################# Slider Starts Here#######################--->
-    @await Component.InvokeAsync("_SliderPartial") 
+    @await Component.InvokeAsync("_SliderPartial")
 
+    <div class="inner-title">
+
+        <h2>@localizer["Hizmetlerimiz"]</h2>
+
+    </div>
     <!-- ################# Key Features Starts Here#######################--->
     @await Component.InvokeAsync("_HizmetPartial")
 
     <!-- ################# Doctors Message Starts Here#######################--->
-    @await Component.InvokeAsync("_DoktorMessage")
+  @*  @await Component.InvokeAsync("_DoktorMessage")*@
     
 
+<div class="doctor-message">
+        <div class="inner-lay">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-6 col-sm-12 doc-img">
+                        <img src="~/free-hospital-medical/assets/images/Talha.png" alt="">
+                    </div>
+                    <div class="col-md-6 col-sm-12 doc-det">
+                        <h2>@localizer["Merhaba ben Doktor Talha Baş"]</h2>
+                        <span>@localizer["Tokatta Klinik Psikolog"]</span>
+
+                    <p>@localizer["Ben dünyanın en iyi doktoruyum"] </p>
+
+                        <h4>@localizer["Buradan Ulaşabilirsiniz"] : +90 530 902 16 58</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
     <!-- ################# Our Team Starts Here#######################--->
+    <div class="row">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="heading-title bottom30 wow fadeInUp" data-wow-delay="300ms">
+                        <span></span>
+                    <h2 class="darkcolor">@localizer["Doktorlarımız"]</h2>
+                    </div>
+                </div>
+            </div>
 
     @await Component.InvokeAsync("_Doktorlarimiz")
-    
 
+    <div class="inner-title">
+
+        <h2><a name="Hastanelerimiz">@localizer["Hastanelerimiz"]</a></h2>
+    </div>
     <!-- ################# Our Blog Starts Here#######################--->
     @await Component.InvokeAsync("_Blog")
+  
 
     <!-- ################# Footer Starts Here#######################--->
 

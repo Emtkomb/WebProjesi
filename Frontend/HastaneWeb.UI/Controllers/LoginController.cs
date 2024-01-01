@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+using System.Collections.Specialized;
+
 namespace HastaneWeb.UI.Controllers
 {
     [AllowAnonymous]
@@ -44,12 +46,14 @@ namespace HastaneWeb.UI.Controllers
                     else if (await _userManager.IsInRoleAsync(user, "Hasta"))
                     {
                         // Member kullanıcı ise Member sayfasına yönlendir
-                        return RedirectToAction("Index", "Default");
+                        return RedirectToAction("Index", "Profile", new {area="Hasta"});
                     }
+                    
+
                 }
                 else
                 {
-                    // Giriş başarısızsa, tekrar login sayfasına yönlendir
+  
                     return View();
                 }
             }

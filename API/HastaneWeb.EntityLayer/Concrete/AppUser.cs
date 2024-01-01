@@ -12,7 +12,8 @@ namespace HastaneWeb.EntityLayer.Concrete
         public string Name { get; set; }
         public string Surname { get; set; }
         public string City { get; set; }
-   
-    
+
+        public List<Randevu>? Randevular { get; set; } = new List<Randevu>();
+
     }
 }

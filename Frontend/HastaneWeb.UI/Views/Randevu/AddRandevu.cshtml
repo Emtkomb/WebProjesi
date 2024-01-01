@@ -13,7 +13,53 @@
 <body>
 
     <!-- ################# Header Starts Here#######################--->
-    @await Component.InvokeAsync("_HeaderPartial")
+   @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<header>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 left-item">
+                    <ul>
+                        <li><i class="fas fa-envelope-square"></i>eren.yigit@ogr.sakarya.edu.tr</li>
+                        <li><i class="fas fa-phone-square"></i> +90 530 902 16 58</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="nav-head" class="header-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 nav-img">
+                    <img src="~/free-hospital-medical/assets/images/logo.jpg" alt="">
+                    <a data-toggle="collapse" data-target="#menu" href="#menu"><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                </div>
+                <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+                    <ul>
+                        <li><a href="."></a></li>
+                        <li><a href="."></a></li>
+                        <li><a href="."></a></li>
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+
+                        <li><a href="/Default/Index/">@localizer["Anasayfa"]</a></li>
+                       
+                            
+                             
+                       
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</header>
+
+
+
 
     @await Component.InvokeAsync("_RandevuCoverPartial")
 
@@ -24,14 +70,18 @@
         <div class="row">
 
            <form method="post" asp-action="AddRandevu">
+    <label>Hasta Adı</label>
+
+    <select asp-for="AppUserId" class="form-control" asp-items="ViewBag.Users"></select>
+    <span asp-validation-for="AppUserId" class="text-danger"></span>
         <label>Hasta Adı</label>
-        <input type="text" asp-for="Name" class="form-control" />
-        <br />
 
+    <select asp-for="TelNo" class="form-control" asp-items="ViewBag.Userstel"></select>
+    <span asp-validation-for="TelNo" class="text-danger"></span>
 
-        <label>Hastan Telefonu</label>
+@*        <label>Hastan Telefonu</label>
         <input type="text" asp-for="TelNo" class="form-control" />
-        <br />
+        <br />*@
         <label>Randevu Tarihi</label>
         <input type="datetime-local" asp-for="RandevuTarihi" class="form-control" />
         <br />

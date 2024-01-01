@@ -9,7 +9,7 @@ using System.Data;
 
 namespace HastaneWeb.UI.Controllers
 {
-   
+    [Authorize(Roles = "Admin")]
     public class DoktorController : Controller
     {
 

@@ -9,6 +9,6 @@ namespace HastaneWeb.BusinessLayer.Abstract
 {
     public interface IRandevuService:IGenericService<Randevu>
     {
- 
+        List<Randevu> GetListRandevu(int id);
     }
 }
